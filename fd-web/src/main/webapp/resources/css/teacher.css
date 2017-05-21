@@ -1,0 +1,297 @@
+@charset "UTF-8";
+
+/*==舞蹈专家==*/
+#videoId .teacher-info>img {
+	height: 140px !important;
+}
+
+.video-play>img {
+	width: 40px !important;
+	height: 40px !important;
+	margin: 0 auto;
+	margin-top:20px;
+}
+
+.teacher-info {
+	background-color: #FFF;
+	display: block;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	text-align: center;
+	cursor: pointer;
+}
+.teacher-type1{
+	margin-top:20px;
+}
+#teacher-type1-id .teacher-type1{
+	border:1px solid #fdbb36;
+	
+}
+.teacher-type1 h5{
+	background-color:#fdbb36;
+	color:#fff;
+	margin:0;
+	padding:10px;
+	
+}
+.teacher-type2{
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+}
+.teacher-type2 h5{
+	color:#333;
+	margin:0;
+	padding:10px;
+	
+}
+.teacher-info .p5{
+	min-height:85px;
+}
+.teacher-info img {
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	max-width: none;
+	height: 180px;
+	width: 100%;
+	-webkit-transition: opacity 0.35s, -webkit-transform 0.45s;
+	-moz-transition: opacity 0.35s, -moz-transform 0.45s;
+	transition: opacity 0.35s, transform 0.45s;
+}
+
+.teacher-info .view-caption {
+	padding: 2em 0 3em 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	min-height: 100%;
+	z-index:99;
+	-webkit-transform: scale(0);
+	-moz-transform: scale(0);
+	-o-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+	background-color: rgba(0, 0, 0, 0);
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-ms-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
+.teacher-info:hover .view-caption {
+	background-color: rgba(0, 0, 0, 0.8);
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+.teacher-head {
+	height: 80px;
+	width: 80px;
+	overflow: hidden;
+	border: 2px solid rgba(255, 255, 255, 0.8);
+	border-radius: 50%;
+	margin: 0 auto;
+	-moz-opacity: 1;
+	opacity: 1;
+}
+
+.teacher-info p {
+	color: #fff;
+	padding: 10px 15px;
+	text-align: left;
+}
+
+.teacher-detail {
+	text-align: left;
+	cursor: pointer;
+	min-height: 300px;
+}
+
+.teacher-detail img {
+	width: 100%;
+	height: 190px !important;
+}
+
+.teacher-detail h5 {
+	font-size:14px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #ddd;
+}
+
+.teacher-detail h5>span {
+	font-size: 14px;
+}
+
+.teacher-detail>div {
+	overflow: hidden;
+	word-wrap: break-word;
+	padding-bottom:20px;
+}
+
+.class-video {
+	cursor: pointer;
+	width: 100% !important;
+}
+
+.border-radius .teacher-info>img {
+	height: 230px !important;
+}
+#studentId, #teacherId {
+	color: #333 !important;
+}
+
+#studentId .teacher-info>h5, #studentId .teacher-info>div {
+	padding: 3px 10px;
+}
+
+
+
+#studentId .teacher-detail, #teacherId .border-radius {
+	border: 1px solid #fdbb36;
+	border-radius: 15px;
+	background-color: #fdbb36;
+	color: #fff;
+	overflow: hidden;
+	position: relative;
+}
+
+
+.teacher-head>img {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+.stage-div{
+	min-height: 400px;
+	width: 100%;
+	background: url(http://on7cnn05g.bkt.clouddn.com/stage-bg.png) no-repeat center center;
+	background-size: 100% auto;
+}
+
+.stage-div .content-flex{
+	 height:400px;
+}
+
+.stage-div .content-flex-items,.stage-div .content-thin-items{
+	 height:400px;  
+	 position:relative;
+}
+.content-flex-items > div,.content-thin-items > div{
+	position: absolute;
+	font-size:8px;
+	padding: 0;
+	
+}
+
+.stage1 {
+    bottom: 185px;
+}
+
+.stage-bottom {
+    top: 230px;
+}
+
+.stage2 {
+    bottom: 210px;
+}
+
+.stage3 {
+    bottom: 240px;
+    height: 174px;
+    overflow: hidden;
+}
+
+
+.stage-end {
+    top: 106px;
+    padding: 2px 0 !important;
+    padding-left: 2px !important;
+    height: 117px;
+    overflow: hidden;
+    font-size: 5px !important;
+    background: #fdbb36;
+    border-radius: 5px;
+}
+
+@media ( min-width : 769px) {
+	.teacher-type1{
+		margin-top:0;
+	}
+	.border-radius .teacher-info>img {
+		height: 310px !important;
+	}
+	#videoId .teacher-info>img {
+		height: 230px !important;
+	}
+	.video-play>img {
+		width: 60px !important;
+		height: 60px !important;
+		margin-top: 55px;
+	}
+	.teacher-detail > img {
+		width: 100%;
+		height: 260px !important;
+	}
+	.teacher-type2 img{
+		margin-bottom:20px;
+	
+	}
+	.teacher-info img {
+		height: 380px;
+	}
+	.teacher-detail h5 {
+		font-size:16px;
+	}
+	.content-flex-items > div, .content-thin-items > div {
+		padding: 0 5px;	
+    	font-size: 13px;
+	}
+	.stage1{
+		bottom: 165px;
+	}
+	.stage-bottom{
+		top: 255px;
+	}
+	.stage2{
+		bottom: 222px;
+	}
+	.stage3{
+		bottom: 278px;
+	    height: auto;
+	    overflow: none;
+	}
+	.stage-end{
+		top: 43px;
+	    /* padding: 20px 0 !important; */
+	    /* padding-left: 10px !important; */
+	    height: 200px;
+	    overflow: hidden;
+	    font-size: 13px !important;
+	    padding: 5px !important;
+	}
+}
+	
+	
+@media ( min-width : 992px) {
+	
+	.teacher-info img {
+		height: 300px;
+	}
+
+}
+

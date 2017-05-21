@@ -1,0 +1,215 @@
+@charset "UTF-8";
+.art-flex{
+	-webkit-justify-content: space-between;
+	-moz-justify-content: space-between;
+	justify-content: space-between;
+}
+.art-nav{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	position: relative;
+}
+
+.art-nav > img{
+	width: 100%;
+	height: 250px;
+}
+
+.art-nav .bg-opacity{
+	position: absolute;
+	color: #fff;
+	top: 0;
+	width: 100%;
+	height: 88%;
+	cursor: pointer;
+	text-align: center;
+	display: none;
+	height: 250px;
+}
+
+.art-nav .bg-opacity > div{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.art-nav .bg-opacity span{
+	display: inline-block;
+	padding:5px 10px;
+	border:1px solid #fff;
+}
+.art-nav h5{
+	text-align: center;
+}
+
+.art-class{
+	position: relative;
+}
+#teacherId h4{
+	color: #333;
+    font-size: 16px;
+    border-top: 1px solid #fdbb36;
+    padding: 8px;
+    margin: 0;
+    padding-left: 10px;
+}
+
+#teacherId h5{
+	color: #fff;
+	font-size: 16px;
+	height: 38px;
+	line-height: 25px;
+	width: 100%;
+	word-break: break-all;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 0;
+	padding-top: 8px;
+}
+.art-class h3,.art-teacher h3,.art-student h3,.art-teacher h4,.art-student h4{
+	color:#fdbb36;
+}
+.art-class,.art-student,.art-teacher{
+	cursor:pointer;
+}
+.art-class:hover .art-icon,.art-student:hover .art-icon, .art-teacher:hover .art-icon{
+	background-position: 0 0;
+}
+.art-icon{
+	display:block;
+	margin:0 auto;
+	width:50px;
+	height:50px;
+	background-position: 0 -101px;
+}
+.new-art-icon{
+	font-size: 50px !important;
+	color:#fdbb36;
+}
+.art-ask a{
+	color:rgb(36,154,255);
+}
+
+.art-ask a:hover{
+	color:#5BC0DE;
+}
+
+.hobby-class{
+	color:#fff;
+	background-image: url(../img/hobby/hobby-bg1.jpg);
+}
+.hobby-teacher{
+	color:#fff;
+	background-image: url(../img/hobby/hobby-bg2.jpg);
+}
+.hobby-student{
+	color:#fff;
+	background-image: url(../img/hobby/hobby-bg3.jpg);
+}
+
+
+.portfolio-box {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    width:100%;
+    min-height:120px;
+}
+#submenu-id .col-xs-4{
+	padding:0;
+}
+.portfolio-box::after{
+	content:"";
+	display:block;
+	padding-top:5%;
+	padding-bottom: 25%;
+}
+.portfolio-box .portfolio-box-caption {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #666;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    padding: 0 15px;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+    font-size: 14px;
+}
+
+.portfolio-box:hover .portfolio-box-caption {
+    opacity: 1;
+}
+
+.portfolio-box.active .portfolio-box-caption {
+    opacity: 1;
+}
+.project-category i{
+	display:block;
+	margin: 0 auto;
+	font-size:25px;
+}
+.project-category i.tab-icon{
+	display:block;
+	margin: 10px auto;
+	width:50px;
+	height:50px;
+	background-position:0 -50px;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+.portfolio-box:hover i.tab-icon,.portfolio-box.active i.tab-icon{
+	background-position:0 0;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+.project-category img{
+	margin: 0 auto;
+}
+.portfolio-box:hover .project-name,.portfolio-box.active i,.portfolio-box.active .project-name{
+	color:#FDBB36;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+#submenu-id .col-sm-4{
+	padding:0;
+}
+@media(min-width:768px) {
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+        font-size: 16px;
+    }
+	.project-category i{
+		font-size:55px;
+	}
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+        font-size: 16px;
+    }
+}

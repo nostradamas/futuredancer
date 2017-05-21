@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fda.mybatis.mapper.ClassIntroduceMapper">
+
+	
+	<select id="selectClassIntroducesInPage" resultType="ClassIntroduceBean">
+		SELECT * 
+		FROM class_introduce 
+        ORDER BY sort desc
+		LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="selectTotal" resultType="java.lang.Integer">
+		SELECT count(*) 
+		FROM class_introduce 
+	</select>
+	
+	<select id="selectClassIntroduceById" resultType="ClassIntroduceBean">
+		SELECT * 
+		FROM class_introduce 
+		where cid = #{cid}
+	</select>
+	
+	<insert id="insert" parameterType="ClassIntroduceBean">
+		insert into class_introduce (cid, tabId, name, sort)
+		values (#{cid}, #{tabId}, #{name}, #{sort});
+	
+	</insert>
+	
+	<insert id="update" parameterType="ClassIntroduceBean">
+		UPDATE class_introduce
+		<set>
+			<if test="tabId != null">
+				tabId = #{tabId},
+			</if>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="sort != null and sort > 0">
+				sort = #{sort},
+			</if>
+		</set>
+		where cid = #{cid}
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM class_introduce WHERE cid = #{cid}
+	</delete>
+	
+</mapper>

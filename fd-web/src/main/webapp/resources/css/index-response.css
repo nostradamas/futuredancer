@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+@media ( min-width : 1200px) {
+	.teacher-slides-ul li img {
+		height: 320px;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.cuture-div {
+		padding: 30px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.teacher-slides {
+		padding-right: 10px;
+	}
+	.teacher-slides-ul li img {
+		height: 180px;
+		width: 165px;
+	}
+	.culture {
+		background-size: cover;
+	}
+	.cuture-div {
+		padding: 10px;
+	}
+	.culture-logo {
+		width: 130px;
+	}
+	.culture-img>img {
+		min-height: 180px;
+	}
+	.newsimg>img {
+		width: 100%;
+		height: auto;
+	}
+	.news-navi li a {
+		font-size: 14px;
+	}
+	.ballerina {
+		width: 155px;
+		padding-right: 13px;
+	}
+	.ballerina a {
+		display: none;
+	}
+	.index-teacher {
+		margin-top: 0;
+	}
+	.teacher-slides {
+		margin: 20px auto;
+	}
+	.slide-caption {
+		top: 30px;
+	}
+	.four-face .column {
+		width: 100%;
+	}
+	.column .culture-img {
+		width: 100%;
+	}
+	.close {
+		position: absolute;
+	}
+	.four-face .column {
+		display: flex;
+		flex-basis: 100%;
+		justify-content: space-between;
+		-webkit-display: flex;
+		-webkit-flex-basis: 100%;
+		-webkit-justify-content: space-between;
+		-moz-display: flex;
+		-moz-flex-basis: 100%;
+		-moz-justify-content: space-between;
+		
+	}
+	.cuture-div {
+		padding: 5px 30px;
+		background-color: rgba(0, 0, 0, 0.5);
+		color: #fff;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+	}
+}
+
+@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) and (orientation : portrait){ 
+	.ballerina a {
+		display: none;
+	}
+}

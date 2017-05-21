@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.w95 {
+	width: 95%;
+	margin: 0 auto;
+}
+
+#news-content-id .teacher-detail img {
+	width: 100%;
+	height: 252px;
+}
+
+#news-content-id .col-md-3 {
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+}
+
+#news-content-id  .newsinfo h5 {
+	font-size: 16px;
+}
+
+#news-content-id .newsinfo .teacher-detail {
+	margin: 10px auto;
+}
+
+@media ( min-width : 769px) {
+	#news-content-id .newsinfo .teacher-detail {
+		margin: 0 auto;
+	}
+	#news-content-id .teacher-detail img {
+		height: 258px !important;
+	}
+}
+
+@media ( min-width : 992px) {
+	#news-content-id .teacher-detail img {
+		height: 255px !important;
+	}
+}

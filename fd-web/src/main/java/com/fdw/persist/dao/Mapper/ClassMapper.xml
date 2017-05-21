@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fdw.mybatis.mapper.ClassMapper">
+
+	
+	<select id="selectClassesInPage" resultType="ClassBean">
+		SELECT * 
+		FROM class 
+		<where>
+			<if test="homeId != null">homeId = #{homeId}</if>
+        </where>
+        ORDER BY sort desc
+		LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="selectTotal" resultType="java.lang.Integer">
+		SELECT count(*) 
+		FROM class 
+		<where>
+			<if test="homeId != null">homeId = #{homeId}</if>
+        </where>
+	</select>
+	
+	<select id="selectClassById" resultType="ClassBean">
+		SELECT *
+		FROM class 
+		where cid = #{cid}
+	</select>
+
+
+	<select id="selectClassMenus" resultType="ClassIntroduceBean">
+		SELECT *
+		FROM class_introduce 
+		order by sort
+	</select>
+</mapper>

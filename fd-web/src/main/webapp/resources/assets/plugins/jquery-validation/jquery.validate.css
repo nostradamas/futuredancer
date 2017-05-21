@@ -1,0 +1,17 @@
+/**校验css*/
+.labelerror {
+	font-size: 14px;
+	text-align: left;
+	margin-top: 6px;
+	color: #D16E6C;
+}
+
+label.error{
+	font-size: 14px;
+	margin-top: 6px;
+	color: #D16E6C;
+}
+
+label.success{
+	margin-left: 10px;
+}

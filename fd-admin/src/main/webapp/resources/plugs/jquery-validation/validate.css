@@ -1,0 +1,52 @@
+
+label.error {       
+   background: url(../images/icon/error.gif) no-repeat 0px 0px;             
+   color: Red;             
+   padding-left: 20px;
+}      
+   
+
+.input {
+	background: url("../images/v-input.gif") 5px no-repeat;
+	padding: 5px 5px 5px 20px;
+	border: 1px solid #B2B2B2;
+	margin: 3px;
+	width: 140px;
+}
+.warning {
+	background: url("../images/v-warning.gif") 5px no-repeat;
+	padding: 5px 5px 5px 20px;
+	border: 1px solid #F00;
+	margin: 3px;
+	width: 140px;
+}
+.ok {
+	background: url("../images/v-ok.gif") 5px no-repeat;
+	padding: 5px 5px 5px 20px;
+	border: 1px solid #0F0;
+	margin: 3px;
+	width: 140px;
+}
+
+
+.ajax-form {
+	background: url("../images/prompt_bg.jpg") right bottom no-repeat;
+}
+.error-form {
+	background: url("../images/error_bg.jpg") right bottom no-repeat;
+}
+.success-form {
+	background: url("../images/success_bg.jpg") right bottom no-repeat;
+}
+#messageBox {
+	display: none;
+	padding: 5px;
+	border: 1px solid #F00;
+	background: #FFF;
+}
+
+.pm-div {
+	width: 150px;
+	float: left;
+}
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	
+  	<mapping path="/home/to**Main**" decorator="/WEB-INF/pages/decorator/home_default.jsp"/>
+  	<mapping path="/home/get**" exclue="true"/>
+  	<mapping path="/home/toVideoPlayMain" exclue="true"/>
+  	
+  	<mapping path="/subHome/to**Main**" decorator="/WEB-INF/pages/decorator/subHome_default.jsp"/>
+ 
+</sitemesh>
+
+
