@@ -8,6 +8,9 @@ var $saveObjectDetailUrl = SERVER_PATH + '/admin/teacher/teacherSave';
 var $deleteObjectUrl = SERVER_PATH + '/admin/teacher/teacherDelete';
 var $objectDetailDialog;
 
+var $toChooseHomeUrl = SERVER_PATH + '/admin/teacher/toChooseHome';//设置主页
+var $saveHomeIdUrl = SERVER_PATH + '/admin/teacher/saveHomeId';
+
 
 $(function() {
 	var colsBindData = [
@@ -28,10 +31,6 @@ $(function() {
         	return type
         }},
         {"data" : "sort"},
-        {"data" : "atHome", render:function(data,type,row,meta){
-        	var top = data==1 ? '显示' : '未显示';
-        	return top;
-        }},
         {"data" : "state",render:function(data,type,row,meta){
 			var operate = '';
 
@@ -41,15 +40,9 @@ $(function() {
 			operate+='&nbsp;<button type="button" class="btn btn-primary btn-sm" onclick="objectDelete(\''+row.tid+'\')">' +
 				'<i class="ace-icon fa fa-align-justify fa-lg white"></i> 删除' +
 				'</button><br/>';
-			if(row.atHome==1){
-				operate+='&nbsp;<button type="button" class="btn btn-primary btn-sm mt5" onclick="showHome(\''+row.tid+'\',2)">' +
-				'<i class="ace-icon fa fa-align-justify fa-lg white"></i>取消显示' +
+			operate+='&nbsp;<button type="button" class="btn btn-primary btn-sm mt5" onclick="toChooseHome(\''+row.tid+'\')">' +
+				'<i class="ace-icon fa fa-align-justify fa-lg white"></i>选择显示页面' +
 				'</button>';
-			} else {
-				operate+='&nbsp;<button type="button" class="btn btn-primary btn-sm mt5" onclick="showHome(\''+row.tid+'\',1)">' +
-				'<i class="ace-icon fa fa-align-justify fa-lg white"></i>显示在首页' +
-				'</button>';
-			}
         	return operate;
         }}
     ];
@@ -192,3 +185,58 @@ function showHome(id, atHome){
 		}
 	});
 }
+
+
+
+//选择所在主页
+
+function toChooseHome(id,homeId){
+	$objectDetailDialog = BootstrapDialog.show({
+		type : BootstrapDialog.TYPE_PRIMARY,
+		size : BootstrapDialog.SIZE_WIDE,
+		title: "教师所在主页",
+     message: $('<div></div>').load( $toChooseHomeUrl + '?id='+id),
+     buttons : [{
+	    	   icon: 'fa fa-save',
+	    	   label : '保存',
+	    	   cssClass : 'btn-primary',
+	    	   action : function(dialog){
+	    		   saveHomeId();
+	    	   }
+	       },{
+	    	   icon: 'fa fa-close',
+	    	   label : '取消',
+	    	   action : function(dialogRef){
+	    		   dialogRef.close();
+	    	   }
+	       }]
+ });
+	
+}
+
+function saveHomeId(){
+	var saveurl= $saveHomeIdUrl;
+	var $objectTeacherForm = $("#objectTeacherForm"); //数据表单
+	var data = $objectTeacherForm.serialize();
+	loading();
+	$.ajax({
+		type : 'POST',
+		url : saveurl,
+		data : data,
+		success : function(data){
+			closeLoading();
+			if (data.rescode == 100) {
+				$currentPageDataTables.ajax.reload();
+				$objectDetailDialog.close();
+				toast_success(data.msg);
+			}else{
+				toast_fail(data.msg);
+			}
+		},error:function(resp,bbb,ccc) {
+			closeLoading();
+			$objectDetailDialog.close();
+			toast_fail('发生错误，请联系管理员！');
+		}
+	});
+}
+

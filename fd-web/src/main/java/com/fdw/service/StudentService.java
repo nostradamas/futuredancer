@@ -12,6 +12,6 @@ import com.fdw.model.StudentBean;
 public interface StudentService {
 
 
-	ListResult<StudentBean> getStudents(int page, int pageSize, String homeId, int atHome);
+	ListResult<StudentBean> getStudents(int page, int pageSize, String homeId);
 
 }

@@ -34,8 +34,7 @@ public class StudentController {
 		String homeId =  StringUtil.toString(request.getParameter("homeId"), null);// 按时间排序
 		int page = NumUtil.toInt(request.getParameter("page"), 1);
 		int pageSize = NumUtil.toInt(request.getParameter("pageSize"), 10);
-		int atHome = NumUtil.toInt(request.getParameter("atHome"), 0);// 默认不显示
-		result = studentServiceImpl.getStudents(page, pageSize, homeId, atHome);
+		result = studentServiceImpl.getStudents(page, pageSize, homeId);
 		return result;
 	}
 	

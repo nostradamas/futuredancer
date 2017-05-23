@@ -12,7 +12,7 @@ import com.fdw.model.TeacherBean;
 public interface TeacherService {
 
 
-	ListResult<TeacherBean> getTeachers(int page, int pageSize,String homeId,int typed, int atHome);
+	ListResult<TeacherBean> getTeachers(int page, int pageSize,String homeId,int typed);
 
 
 }

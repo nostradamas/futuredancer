@@ -2,6 +2,7 @@
 
 // 获取banner
 function getStudents(page, pageSize, contentId, setPage, homeId, atHome){
+	console.log(homeId);
 	$.ajax({
         type : 'GET',
         url : SERVER_PATH + '/student/getStudents',

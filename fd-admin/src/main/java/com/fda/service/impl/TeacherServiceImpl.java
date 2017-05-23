@@ -1,5 +1,6 @@
 package com.fda.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fda.constants.RescodeConstants;
 import com.fda.controller.res.ListResult;
+import com.fda.model.StudentBean;
+import com.fda.model.StudentHomeBean;
 import com.fda.model.TeacherBean;
+import com.fda.model.TeacherHomeBean;
 import com.fda.persist.dao.TeacherDao;
 import com.fda.service.TeacherService;
 import com.fda.service.exception.ServiceException;
@@ -77,6 +81,41 @@ public class TeacherServiceImpl  implements TeacherService {
 			new ServiceException("fail");
 		}
 		return flag;
+	}
+	
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public boolean saveHomeId(String[] homeIds, String teacherId) throws ServiceException {
+		boolean flag = true;
+		TeacherBean teacher = teacherImpl.selectTeacherById(teacherId);
+		if (teacher == null) {
+			throw new ServiceException(RescodeConstants.getInstance().get("object_is_not_exist"), "学生");
+		}
+		if(homeIds == null || homeIds.length == 0) {
+			throw new ServiceException(RescodeConstants.getInstance().get("object_is_not_exist"), "选择页面");
+		}
+		int count = teacherImpl.selectHomeCount(teacherId);
+		if(count > 0) {
+			flag = teacherImpl.deleteTeacherHome(teacherId) > 0;
+			if(!flag) {
+				throw new ServiceException(RescodeConstants.getInstance().get("object_del_fail"));
+			}
+		}
+		List<TeacherHomeBean> data = new ArrayList<>();
+		for(String hid : homeIds) {
+			TeacherHomeBean t = new TeacherHomeBean();
+			t.setAid(AppTextUtil.getPrimaryKey());
+			t.setTeacherId(teacherId);
+			t.setHomeId(hid);
+			data.add(t);
+		}
+		flag = teacherImpl.insertTeacherHome(data) > 0;
+		return flag;
+	}
+
+	@Override
+	public List<TeacherHomeBean> selectHomesByTeacherId(String teacherId) {
+		return teacherImpl.selectTeacherHome(teacherId);
 	}
 
 }

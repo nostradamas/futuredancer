@@ -34,9 +34,9 @@ public class TeacherController {
 		String homeId =  StringUtil.toString(request.getParameter("homeId"), null);// 按时间排序
 		int type = NumUtil.toInt(request.getParameter("type"), 0);
 		int page = NumUtil.toInt(request.getParameter("page"), 1);
-		int atHome = NumUtil.toInt(request.getParameter("atHome"), 0);// 默认不显示
+		//int atHome = NumUtil.toInt(request.getParameter("atHome"), 0);// 默认不显示
 		int pageSize = NumUtil.toInt(request.getParameter("pageSize"), 10);
-		result = teacherServiceImpl.getTeachers(page, pageSize, homeId, type, atHome);
+		result = teacherServiceImpl.getTeachers(page, pageSize, homeId, type);
 		return result;
 	}
 	

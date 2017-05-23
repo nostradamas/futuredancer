@@ -65,4 +65,34 @@
 	<delete id="deleteById">
 		DELETE FROM student WHERE sid = #{sid}
 	</delete>
+	
+	<!-- 插入数据 -->
+	<insert id="insertStudentHome">
+		INSERT INTO student_home
+		(aid,
+		homeId,
+		studentId)
+		VALUES
+		<foreach collection="data" item="item" separator="," >
+			(#{item.aid},
+			#{item.homeId},
+			#{item.studentId})
+		</foreach>
+	</insert>
+	
+	<delete id="deleteStudentHome">
+		DELETE FROM student_home WHERE studentId = #{studentId}
+	</delete>
+	
+	<select id="selectStudentHome" resultType="StudentHomeBean">
+		SELECT * 
+		FROM student_home 
+		where studentId = #{studentId}
+	</select>
+
+	<select id="selectHomeCount" resultType="java.lang.Integer">
+		SELECT count(*) 
+		FROM student_home 
+		where studentId = #{studentId}
+	</select>
 </mapper>

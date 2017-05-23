@@ -8,6 +8,7 @@ $(window).load(function() {
 	getBanners(1, true);
 	getHomeContent(hid);
 	getSubNav(hid);
+	console.log(hid);
 	getTeacherLists(hid, 'teacherId', 1, 30);
 	getStudents(1, 8, 'studentlistId', false, hid, 1);
 });

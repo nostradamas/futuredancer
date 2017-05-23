@@ -1,11 +1,13 @@
 package com.fda.persist.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
 import com.fda.model.TeacherBean;
+import com.fda.model.TeacherHomeBean;
 import com.fda.persist.dao.TeacherDao;
 
 @Repository
@@ -42,6 +44,29 @@ public class TeacherImpl extends BaseImpl  implements TeacherDao{
 	@Override
 	public int deleteById(String id) {
 		return sqlSessionTemplate.delete(NAME_SPACE + ".deleteById", id);
+	}
+
+	@Override
+	public int selectHomeCount(String teacherId) {
+		return sqlSessionTemplate.selectOne(NAME_SPACE + ".selectHomeCount", teacherId);
+	}
+
+	@Override
+	public int deleteTeacherHome(String teacherId) {
+		return sqlSessionTemplate.delete(NAME_SPACE + ".deleteTeacherHome", teacherId);
+	}
+
+	@Override
+	public int insertTeacherHome(List<TeacherHomeBean> data) {
+		Map<String, List<TeacherHomeBean>> params = new HashMap<>();
+		params.put("data", data);
+
+		return sqlSessionTemplate.insert(NAME_SPACE + ".insertTeacherHome", params);
+	}
+
+	@Override
+	public List<TeacherHomeBean> selectTeacherHome(String teacherId) {
+		return sqlSessionTemplate.selectList(NAME_SPACE + ".selectTeacherHome", teacherId);
 	}
 	
 

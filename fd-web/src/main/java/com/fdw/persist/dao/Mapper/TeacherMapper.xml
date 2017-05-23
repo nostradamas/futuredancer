@@ -4,46 +4,30 @@
 
 	
 	<select id="selectTeachersInPage" resultType="TeacherBean">
-		SELECT * 
-		FROM teacher 
+		SELECT
+			t.*
+		FROM
+			teacher t
+		LEFT JOIN teacher_home th ON t.tid = th.teacherId
 		<where>
-			<if test="type != null and type != 0">type = #{type}</if>
-			<if test="atHome != null and atHome != 0">and atHome = #{atHome}</if>
-			<choose>
-		        <when test="tabs != null and tabs.size() > 0">
-		            and homeId in
-			        <foreach collection="tabs" item="tId" index="index"
-			            open="(" close=")" separator=",">
-			            #{tId}
-			        </foreach>
-		        </when>
-		        <otherwise>
-		        	<if test="homeId != null">and homeId = #{homeId}</if>
-		        </otherwise>
-		    </choose>
+			<if test="type != null and type != 0">t.type = #{type}</if>
+			<if test="homeId">and th.homeId = #{homeId}</if>
         </where>
-        ORDER BY type,sort desc
+        ORDER BY t.type,t.sort desc
+        <if test="start != null and start >= 0">
 		LIMIT #{start}, #{pageSize}
+        </if>
 	</select>
 
 	<select id="selectTotal" resultType="java.lang.Integer">
-		SELECT count(*) 
-		FROM teacher 
+		SELECT
+			count(*)
+		FROM
+			teacher t
+		LEFT JOIN teacher_home th ON t.tid = th.teacherId
 		<where>
-			<if test="type != null and type != 0">type = #{type}</if>
-			<if test="atHome != null and atHome != 0">and atHome = #{atHome}</if>
-			<choose>
-		        <when test="tabs != null and tabs.size() > 0">
-		            and homeId in
-			        <foreach collection="tabs" item="tId" index="index"
-			            open="(" close=")" separator=",">
-			            #{tId}
-			        </foreach>
-		        </when>
-		        <otherwise>
-		        	<if test="homeId != null">and homeId = #{homeId}</if>
-		        </otherwise>
-		    </choose>
+			<if test="type != null and type != 0">t.type = #{type}</if>
+			<if test="homeId">and th.homeId = #{homeId}</if>
         </where>
 	</select>
 

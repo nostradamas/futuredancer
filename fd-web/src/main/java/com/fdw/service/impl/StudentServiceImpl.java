@@ -20,17 +20,17 @@ public class StudentServiceImpl  implements StudentService {
 	StudentDao studentImpl;
 	
 	@Override
-	public ListResult<StudentBean>  getStudents(int page, int pageSize,String homeId, int atHome) {
+	public ListResult<StudentBean>  getStudents(int page, int pageSize,String homeId) {
 		ListResult<StudentBean> result = new ListResult<>();
 		Map<String, Object> params = new HashMap<>();
-		int start = (page - 1) * pageSize;
-		params.put("start", start);
-		params.put("pageSize", pageSize);
-		params.put("atHome", atHome);
 		if(!StringUtil.checkEmpty(homeId)){
 			params.put("homeId", homeId);
 		}
 		int totalSize = studentImpl.selectTotal(params);
+		pageSize = pageSize > totalSize ? totalSize : pageSize;
+		int start = (page - 1) * pageSize;
+		params.put("start", start);
+		params.put("pageSize", pageSize);
 		List<StudentBean> beans = studentImpl.selectStudentsInPage(params);
 		result.setPage(page);
 		result.setData(beans);

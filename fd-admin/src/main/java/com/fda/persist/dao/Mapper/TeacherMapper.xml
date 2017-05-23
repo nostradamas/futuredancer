@@ -73,4 +73,36 @@
 		DELETE FROM teacher WHERE tid = #{tid}
 	</delete>
 	
+	
+		
+	<!-- 插入数据 -->
+	<insert id="insertTeacherHome">
+		INSERT INTO teacher_home
+		(aid,
+		homeId,
+		teacherId)
+		VALUES
+		<foreach collection="data" item="item" separator="," >
+			(#{item.aid},
+			#{item.homeId},
+			#{item.teacherId})
+		</foreach>
+	</insert>
+	
+	<delete id="deleteTeacherHome">
+		DELETE FROM teacher_home WHERE teacherId = #{teacherId}
+	</delete>
+	
+	<select id="selectTeacherHome" resultType="TeacherHomeBean">
+		SELECT * 
+		FROM teacher_home 
+		where teacherId = #{teacherId}
+	</select>
+
+	<select id="selectHomeCount" resultType="java.lang.Integer">
+		SELECT count(*) 
+		FROM teacher_home 
+		where teacherId = #{teacherId}
+	</select>
+	
 </mapper>

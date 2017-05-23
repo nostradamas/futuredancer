@@ -11,7 +11,7 @@ $(window).load(function() {
 	getMenus(hid);
 	getIndexTeachers(hid);
 	getCLassLists(hid, 1, 10, 'index-video-slide');
-    getStudents(1, 16, 'studentlistId', false, null, 1);
+    getStudents(1, 16, 'studentlistId', false, hid, 1);
 	
 });
 $window.resize(function() {

@@ -63,19 +63,13 @@
 				</span>
 			</div>
 		</div>
-		<div class="form-group">
-			<label  class="col-sm-3 control-label" for="sort">顺序</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control digits" id="sort" name="sort" placeholder="顺序" value="${bean.sort}">
-			</div>
-		</div>
-		<div class="form-group">
+		<%-- <div class="form-group">
 			<label  class="col-sm-3 control-label" for="homeId">所属主页</label>
 			<div class="col-sm-4">
 				<input type="hidden" value="${homeId}" id="homeId" name="homeId"/>
 				<input type="text" class="form-control"  readOnly="readonly" value="${homeName}">
 			</div>
-		</div>
+		</div> --%>
 	</div>
 </form>
 

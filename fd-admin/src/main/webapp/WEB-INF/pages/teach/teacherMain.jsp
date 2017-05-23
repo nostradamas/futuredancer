@@ -36,9 +36,6 @@
 											<button type="button" class="btn btn-primary btn-xs" name="dataReload">
 												<i class="ace-icon fa fa-refresh fa-lg white"></i> 刷新
 											</button>
-											<button type="button" class="btn btn-primary btn-xs" id="backHome">
-												<i class="ace-icon fa fa-refresh fa-lg white"></i> 返回管理
-											</button>
 										</div>
 									</row>
 				                </div>
@@ -60,7 +57,6 @@
 								<th>头像</th>
 								<th>分类</th>
 								<th>顺序</th>
-								<th>显示在首页</th>
 								<th>操作</th>
 							</tr>
 							</thead>

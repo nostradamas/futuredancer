@@ -41,6 +41,11 @@
 		<msg>保存失败！</msg>
 	</result>
 	
+	<result name="object_del_fail">
+		<code>108</code>
+		<msg>删除失败！</msg>
+	</result>
+	
 
 	<result name="vcode_is_send">
 		<code>100001</code>

@@ -437,7 +437,7 @@ function getQueryString(name) {
 
 function getTeacherLists(hid, contentId, atHome, pageSize){
 	var isHome = typeof(atHome)=='undefined'? 0 : atHome;
-	var pageSize = typeof(pageSize)=='undefined'? 0 : pageSize;
+	var pageSize = typeof(pageSize)=='undefined'? 10 : pageSize;
 	$.ajax({
         type : 'GET',
         url : SERVER_PATH + '/teacher/getTeachers',
@@ -537,7 +537,7 @@ function getStudentLists(homeId, page, pageSize, contentId, atHome){
         data : {
         	homeId : typeof(homeId) != 'undefined' && homeId != 'undefined' ? homeId: '',
         	page : page,
-        	pageSize : pageSize,
+        	pageSize : typeof(pageSize)=='undefined'  && pageSize != 'undefined' ? 10 : pageSize,
         	atHome :  typeof(atHome) != 'undefined' && atHome != 'undefined' ? atHome: 0
         },
         async:true,

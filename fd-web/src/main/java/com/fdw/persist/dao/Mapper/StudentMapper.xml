@@ -4,22 +4,26 @@
 
 	
 	<select id="selectStudentsInPage" resultType="StudentBean">
-		SELECT * 
-		FROM student 
+		SELECT
+			s.*
+		FROM
+			student s
+		LEFT JOIN student_home sh ON s.sid = sh.studentId 
 		<where>
-			<if test="homeId != null">homeId = #{homeId}</if>
-			<if test="atHome != null and atHome != 0">and atHome = #{atHome}</if>
+			<if test="homeId != null">sh.homeId = #{homeId}</if>
         </where>
-        ORDER BY sort desc
+        ORDER BY s.sort desc
 		LIMIT #{start}, #{pageSize}
 	</select>
 
 	<select id="selectTotal" resultType="java.lang.Integer">
-		SELECT count(*) 
-		FROM student 
+		SELECT
+			count(*)
+		FROM
+			student s
+		LEFT JOIN student_home sh ON s.sid = sh.studentId 
 		<where>
-			<if test="homeId != null">homeId = #{homeId}</if>
-			<if test="atHome != null and atHome != 0">and atHome = #{atHome}</if>
+			<if test="homeId != null">sh.homeId = #{homeId}</if>
         </where>
 	</select>
 

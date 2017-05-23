@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fda.model.StudentBean;
+import com.fda.model.StudentHomeBean;
 
 
 
@@ -26,6 +27,15 @@ public interface StudentDao {
 	int update(StudentBean bean);
 
 	int deleteById(String id);
+
+	int insertStudentHome(List<StudentHomeBean> data);
+
+	int deleteStudentHome(String studentId);
+	
+	List<StudentHomeBean> selectStudentHome(String studentId);
+
+	int selectHomeCount(String studentId);
+
 
 	
 }
