@@ -43,7 +43,6 @@ public class NewsDetailController {
 		modelAndView.addObject("homeId", homeId);
 		
 		NewsBean newsBean = newsServiceImpl.getNewsByCode(newscode);
-		System.out.println(newsBean);
 		if(newsBean != null) {
 			Timestamp date = newsBean.getCreateTime();
 			if(date == null) {

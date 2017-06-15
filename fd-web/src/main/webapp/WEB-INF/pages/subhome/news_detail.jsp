@@ -19,9 +19,14 @@
 	</section>
 	<!-- 往期回顾 -->
 	<input type="hidden" value="${cid}" id="cid"/>
+	
+	
 	<section class="mt40 mb40 pt20 text-center bg">
 		<div class="container ">
 			<div class="row">
+				<div class="col-sm-1 col-xs-12 mt30">
+					${empty newsBean ? '' : newsBean.title}
+				</div>
 				<div class="col-sm-1 col-xs-12 mt30">
 					<a href="${SERVER_PATH}/home/toNewsMain" class="btn">返回新闻列表</a>
 				</div>

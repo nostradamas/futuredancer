@@ -49,9 +49,11 @@
 		where nid = #{nid}
 	</select>
 	
-	<select id="selectNewsByCode" resultType="NewsBean">
-		SELECT * 
-		FROM news 
+	<select id="selectNewsByCode" resultType="NewsBean" resultMap="NewsResultMap">
+		SELECT n.*,c.cid,c.name as cName 
+		FROM news n
+		left join news_category c
+		on n.cid = c.cid
 		where createCode = #{createCode}
 	</select>
 </mapper>

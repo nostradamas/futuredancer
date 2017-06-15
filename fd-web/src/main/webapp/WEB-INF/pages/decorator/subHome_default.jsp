@@ -34,7 +34,7 @@
 			<div class="row">
 				<div class="col-md-2 col-xs-2">
 					<div class="logo">
-						<a title="返回首页" href="${SERVER_PATH}/"><img src="http://on01whf2s.bkt.clouddn.com/logo.png" /></a>
+						<a title="返回首页" href="${SERVER_PATH}/"><img src="http://on01whf2s.bkt.clouddn.com/logo.png" title="未来舞者"/></a>
 						<span id="header-title-id">返回首页</span>
 					</div>
 				</div>

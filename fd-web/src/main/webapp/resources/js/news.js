@@ -48,20 +48,16 @@ function getNews(page, pageSize, cid){
         	if(res.rescode == 100) {
         		var news = res.data;
         		var totalSize = res.totalSize;
-        		var $html = '<div class="row newsinfo">';
+        		var $html = '';
         		if(news != null) {
         			$.each(news, function(i, item){
-        				$html += '<div style="cursor:pointer" class="teacher-detail col-md-3 col-sm-6 col-xs-12" onclick="viewNews(\''+item.createCode+'\')">';
-        				$html += '  <img src="' + item.img + '">';
-        				$html += '  <div>';
-        				$html += '      <h5>' + item.title + '</h5>';
-        				$html += '  </div>';
-        				$html += '</div>';
-        				if(i != 0 && (i+1)%4 == 0){
-        					$html += '</div><div class="row mt40 newsinfo">'
-        				}
+        				$html += '<div class="news-item" onclick="viewNews(\''+item.createCode+'\')">';
+        				$html += '	<div class="news-item-img"><img src="' + item.img + '"></div>';
+        				$html += '	<div class="news-item-content">';
+        				$html += '   	<h3>' + item.title + '<span class="news-date">'+item.createTime+'</span><i class="clear"></i></h3>';
+        				$html += '  	<div class="news-item-brief">'+item.brief+'</div>';
+        				$html += '	</div></div>';
         			});
-        			$html += '</div>'
         			$('#news-content-id').empty();
             		$('#news-content-id').html($html);
             		// 分页

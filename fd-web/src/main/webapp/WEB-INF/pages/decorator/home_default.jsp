@@ -31,7 +31,7 @@
 			<div class="row">
 				<div class="col-md-2 col-xs-2">
 					<div class="logo">
-						<a href="${SERVER_PATH}/"><img src="http://on01whf2s.bkt.clouddn.com/logo.png" alt="logo" /></a>
+						<a href="${SERVER_PATH}/"><img src="http://on01whf2s.bkt.clouddn.com/logo.png" alt="logo" title="未来舞者"/></a>
 					</div>
 				</div>
 				<div class="col-md-8 col-xs-10" id="index-tab-id">

@@ -27,7 +27,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="container-fluid text-left w95" id="news-content-id">
+		<div class="container " id="news-content-id">
 		</div>
 		<div class="row mb40 text-center" id="page-nav-id">
 		</div>
