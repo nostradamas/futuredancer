@@ -7,7 +7,13 @@
 <title>课程介绍</title>
 
 <link href="${SERVER_PATH_resources}/css/dance.css" rel="stylesheet" type="text/css">
+<style>
+	.btn-sign{
+	    margin: 30px 0;
+	    display: inline-block;
+	}
 
+</style>
 </head>
 <body>
 	<input type="hidden" value="${empty homeBean?'':homeBean.hid}" id="homeId"/>
@@ -248,7 +254,7 @@
 				<div class="flexslider" id="teacherId">
 				</div>
 				<div class="col-md-12 mt40">
-					<button class="mt30 mauto btn-sign">立刻报名</button>
+					<a href="${BAIDU_SHANGQIAO}" class="mt30 mauto btn-sign" title="立刻报名" target="_blank">立刻报名></a>
 				</div>
 			</div>
 			<div class="row">

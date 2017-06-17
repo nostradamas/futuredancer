@@ -19,12 +19,12 @@
 		<li class="foot"><a href="javascript:void(0)" id="back-top"><i class="iconfont icon-fanhuidingbu"></i><span>返回顶部</span></a></li>
 	</ul>
 </div> 
-<div class="poster-div">
+<%-- <div class="poster-div">
 	<a href="${BAIDU_SHANGQIAO}" target="_blank">
 		<img id="posterId" src="" >
 	</a>
 	<i class="iconfont icon-guanbi poster-close"></i>
-</div>
+</div> --%>
 <section class="pt10 pb10" >
 	<div class="container text-left">
 		<div class="row">

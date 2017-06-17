@@ -82,6 +82,7 @@
 						<div class="aboutus-right">
 							<div class="link-div">
 								<a href="#" title="关于我们"><img class="link-img" src="http://on01whf2s.bkt.clouddn.com/link.png" alt="link"/> </a>
+								<div style="clear:both"></div>
 							</div>
 						</div>
 					</div>
