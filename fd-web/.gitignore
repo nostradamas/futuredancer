@@ -1,7 +1,8 @@
-/build/
-/bin/
 /.settings/
+/bin/
+/build/
 /.gradle/
-.project
-.classpath
-/.gradle/
+/gradle/
+/.classpath
+/.project
+/spring.log
