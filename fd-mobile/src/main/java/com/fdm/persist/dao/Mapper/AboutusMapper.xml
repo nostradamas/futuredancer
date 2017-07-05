@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fdm.mybatis.mapper.AboutusMapper">
+
+	
+	<select id="selectAboutus" resultType="AboutusBean">
+		SELECT * 
+		FROM aboutus 
+		where aid = 'f5c63c705ea844d59fdc35b05787af1b'
+		limit 1;
+	</select>
+	
+	
+	<update id="update" parameterType="AboutusBean">
+		UPDATE aboutus
+		<set>
+			<if test="aboutus != null">
+				aboutus = #{aboutus},
+			</if>
+			<if test="enlighten != null">
+				enlighten = #{enlighten},
+			</if>
+			<if test="popularize != null">
+				popularize = #{popularize},
+			</if>
+			<if test="specialty != null">
+				specialty = #{specialty},
+			</if>
+			
+			<if test="modeImg != null">
+				modeImg = #{modeImg},
+			</if>
+			<if test="logo != null">
+				logo = #{logo},
+			</if>
+		</set>
+		where aid = #{aid}
+	</update>
+</mapper>

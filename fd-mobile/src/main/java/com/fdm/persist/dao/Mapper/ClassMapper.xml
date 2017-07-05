@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fdm.mybatis.mapper.ClassMapper">
+
+	
+	<select id="selectClassesInPage" resultType="ClassBean">
+		SELECT * 
+		FROM class 
+		<where>
+			<if test="homeId != null">homeId = #{homeId}</if>
+        </where>
+        ORDER BY sort desc
+		LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="selectTotal" resultType="java.lang.Integer">
+		SELECT count(*) 
+		FROM class 
+		<where>
+			<if test="homeId != null">homeId = #{homeId}</if>
+        </where>
+	</select>
+	
+	<select id="selectClassById" resultType="ClassBean">
+		SELECT *
+		FROM class 
+		where cid = #{cid}
+	</select>
+	
+	
+	<insert id="insert" parameterType="ClassBean">
+		insert into class (cid, name, videoUrl, img, brief, sort, createTime)
+		values (#{cid}, #{name}, #{videoUrl}, #{img}, #{brief}, #{sort}, now());
+	
+	</insert>
+	
+	<insert id="update" parameterType="ClassBean">
+		UPDATE class
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="videoUrl != null">
+				videoUrl = #{videoUrl},
+			</if>
+			<if test="img != null">
+				img = #{img},
+			</if>
+			<if test="brief != null">
+				brief = #{brief},
+			</if>
+			<if test="sort != null and sort > 0">
+				sort = #{sort},
+			</if>
+		</set>
+		where cid = #{cid}
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM class WHERE cid = #{cid}
+	</delete>
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fdm.mybatis.mapper.StepMapper">
+
+	<select id="selectStepsInPage" resultType="StepBean">
+		SELECT * 
+		FROM step 
+		<where>
+			<if test="hid != null">hid = #{hid}</if>
+        </where>
+		LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="selectTotal" resultType="java.lang.Integer">
+		SELECT count(*) 
+		FROM step 
+		<where>
+			<if test="hid != null">hid = #{hid}</if>
+        </where>
+	</select>
+	
+	<select id="selectStepById" resultType="StepBean">
+		SELECT * 
+		FROM step 
+		where sid = #{sid}
+	</select>
+	
+	<insert id="insert" parameterType="StepBean">
+		insert into step (sid, hid, typeId, step1, step2, step3, 
+			step4, step5, step6, end, isHide)
+		values (#{sid}, #{hid}, #{typeId}, #{step1}, #{step2}, 
+			#{step3}, #{step4}, #{step5}, #{step6}, #{end}, #{isHide});
+	</insert>
+	
+	<insert id="update" parameterType="StepBean">
+		UPDATE step
+		<set>
+			<if test="step1 != null">
+				step1 = #{step1},
+			</if>
+			<if test="step2 != null">
+				step2 = #{step2},
+			</if>
+			<if test="step3 != null">
+				step3 = #{step3},
+			</if>
+			<if test="step4 != null">
+				step4 = #{step4},
+			</if>
+			<if test="step5 != null">
+				step5 = #{step5},
+			</if>
+			<if test="step6 != null">
+				step6 = #{step6},
+			</if>
+			<if test="end != null">
+				end = #{end},
+			</if>
+			<if test="isHide != null isHide sort > 0">
+				isHide = #{isHide},
+			</if>
+		</set>
+		where sid = #{sid}
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM Step WHERE sid = #{sid}
+	</delete>
+	
+</mapper>

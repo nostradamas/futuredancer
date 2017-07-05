@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<strings>
+
+	<string name="vcode_message_reg_tip">您的注册验证码是：%s，10分钟内有效！</string>
+	<string name="vcode_message_bind_tip">您的绑定手机验证码是：%s，10分钟内有效！</string>
+
+</strings>

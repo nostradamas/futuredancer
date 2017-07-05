@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fdm.mybatis.mapper.NewsMapper">
+
+	
+	<resultMap id="NewsResultMap" type="NewsBean" >
+		<id property="nid" column="nid"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="brief" column="brief"/>
+		<result property="img" column="img"/>
+		<result property="linkUrl" column="linkUrl"/>
+		<result property="sort" column="sort"/>
+		<result property="isTop" column="isTop"/>
+		<result property="createTime" column="createTime"/>
+		<result property="createCode" column="createCode"/>
+		<association property="category" column="cid" javaType="NewsCategoryBean">
+			<result property="cid" column="cid"/>
+			<result property="name" column="cName"/>
+		</association>
+	</resultMap>
+	<select id="selectNewsInPage" resultMap="NewsResultMap">
+		SELECT n.*,c.cid,c.name as cName 
+		FROM news n
+		left join news_category c
+		on n.cid = c.cid
+		<where>
+			<if test="cid != null">n.cid = #{cid}</if>
+			<if test="content != null">and n.title like CONCAT('%',#{content},'%')</if>
+        </where>
+        ORDER BY n.cid,n.isTop Desc, n.sort DESC, n.createTime DESC
+		LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="selectTotal" resultType="java.lang.Integer">
+		SELECT count(*) 
+		FROM news 
+		<where>
+			<if test="cid != null">cid = #{cid}</if>
+			<if test="content != null">and title like CONCAT('%',#{content},'%')</if>
+        </where>
+	</select>
+	
+	<select id="selectNewsCategory" resultType="NewsCategoryBean">
+		SELECT *
+		FROM news_category
+		<where>
+			<if test="schcontent != null">name like CONCAT('%',#{schcontent},'%')</if>
+        </where>
+        ORDER BY sort
+	</select>
+	
+	<select id="selectNewsById" resultMap="NewsResultMap">
+		SELECT  n.*,c.cid,c.name as cName 
+		FROM news n
+		left join news_category c
+		on n.cid = c.cid
+		where n.nid = #{nid}
+	</select>
+	
+	
+	<insert id="insertNews" parameterType="NewsBean">
+		INSERT INTO news (nid, title, brief, content, img, createTime, cid, linkUrl,sort, isTop,createCode)
+		values (#{nid}, #{title}, #{brief}, #{content}, #{img}, now(), #{cid}, #{linkUrl}, #{sort}, 1, #{createCode})
+	</insert>
+	
+	<update id="updateNews" parameterType="NewsBean">
+		UPDATE news
+		<set>
+			<if test="title != null">
+				title = #{title},
+			</if>
+			<if test="brief != null">
+				brief = #{brief},
+			</if>
+			<if test="content != null">
+				content = #{content},
+			</if>
+			<if test="img != null">
+				img = #{img},
+			</if>
+			<if test="cid != null">
+				cid = #{cid},
+			</if>
+			<if test="sort != null and sort > 0">
+				sort = #{sort},
+			</if>
+			<if test="isTop != null and isTop > 0">
+				isTop = #{isTop},
+			</if>
+			<if test="linkUrl != null">
+				linkUrl = #{linkUrl},
+			</if>
+
+		</set>
+		where nid = #{nid}
+	</update>
+
+	<delete id="deleteNewsById">
+		DELETE FROM news WHERE nid=#{nid}
+	</delete>
+	
+	<!-- =========== 新闻分类  ============ -->
+	
+	
+	<select id="selectNewsCategoryById" resultType="NewsCategoryBean">
+		SELECT *
+		FROM news_category 
+		where cid = #{cid}
+	</select>
+	
+	
+	<insert id="insertCategory" parameterType="NewsCategoryBean">
+		
+		INSERT INTO 
+			news_category (cid, name, sort)
+		values 
+			(#{cid}, #{name}, #{sort})
+	</insert>
+	
+	<update id="updateCategory" parameterType="NewsCategoryBean">
+		UPDATE news_category
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="sort != null">
+				sort = #{sort},
+			</if>
+
+		</set>
+		where cid = #{cid}
+	</update>
+
+	<delete id="deleteCategoryById">
+		DELETE FROM news_category WHERE cid=#{cid}
+	</delete>
+	
+	
+</mapper>
