@@ -23,7 +23,7 @@
 			<if test="targetId != null and targetId > 0">tt.targetId = #{targetId}</if>
 			<if test="level != null and level > 0">and p.level =#{level}</if>
         </where>
-        ORDER BY t.sort desc
+        ORDER BY p.level,t.sort desc
 		LIMIT #{start}, #{pageSize}
 	</select>
 
