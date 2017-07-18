@@ -37,6 +37,7 @@ public class NewsController {
 	@ResponseBody
 	public ListResult<ResNewsListBean> getLists(HttpServletRequest request, HttpServletResponse response,
 			@PathVariable String cid) {
+		response.setContentType("application/json;charset=UTF-8");//防止数据传递乱码
 		ListResult<ResNewsListBean> result = new ListResult<ResNewsListBean>();
 		try {
 			String sch = StringUtil.toString(request.getParameter("sch"), null);//
@@ -54,6 +55,7 @@ public class NewsController {
 	@ResponseBody
 	public ListResult<NewsCategoryBean> getCategoryLists(HttpServletRequest request, HttpServletResponse response) {
 		ListResult<NewsCategoryBean> result = new ListResult<NewsCategoryBean>();
+		response.setContentType("application/json;charset=UTF-8");//防止数据传递乱码
 		try {
 			String sch = StringUtil.toString(request.getParameter("sch"), null);//
 			List<NewsCategoryBean> res = newsServiceImpl.getNewsCategory(sch);
@@ -73,6 +75,7 @@ public class NewsController {
 			@PathVariable String nid) {
 		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		ObjectResult<ResNewsBean> result = new ObjectResult<>();
+		response.setContentType("application/json;charset=UTF-8");//防止数据传递乱码
 		try {
 			NewsBean newsBean = newsServiceImpl.getNewsById(nid);
 			ResNewsBean res = new ResNewsBean();

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.fdw.util.AppTextUtil;
+
 
 public class CommonInterceptor extends HandlerInterceptorAdapter {
 	private long startTime;
@@ -17,7 +19,6 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		log.info("start----------------------------------------------");
-
 		request.setCharacterEncoding("utf-8");
 		String accept = request.getHeader("accept");
 		log.info("accept=" + accept);
@@ -41,8 +42,12 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 		}
 		Logger.getLogger(this.getClass()).info(sb.toString());
 		//String sessionId = request.getSession().getId();
-		
 		response.setCharacterEncoding("utf-8");
+		boolean judgeIsMoblie = AppTextUtil.JudgeIsMoblie(request);  
+		if(judgeIsMoblie==true){  
+			response.sendRedirect("http://m.weilaiwuzhe.com/future/");  
+			return false;
+        }
 		return super.preHandle(request, response, handler);
 	}
 

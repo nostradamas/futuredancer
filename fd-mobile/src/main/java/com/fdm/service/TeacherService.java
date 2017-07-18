@@ -1,11 +1,7 @@
 package com.fdm.service;
 
-import java.util.List;
-
 import com.fdm.controller.res.ListResult;
-import com.fdm.model.TeacherBean;
-import com.fdm.model.TeacherHomeBean;
-import com.fdm.service.exception.ServiceException;
+import com.fdm.controller.resmodel.ResTeacherBean;
 
 /**
  * 授课教师service层
@@ -15,16 +11,6 @@ import com.fdm.service.exception.ServiceException;
  */
 public interface TeacherService {
 
-	ListResult<TeacherBean> getTeacherLists(Integer start, Integer length,String homeId , int type);
-
-	TeacherBean getTeacherById(String id);
-
-	boolean saveTeacher(TeacherBean bean);
-
-	boolean deleteTeacherById(String id) throws ServiceException;
-
-	boolean saveHomeId(String[] homeIds, String teacherId) throws ServiceException;
-
-	List<TeacherHomeBean> selectHomesByTeacherId(String teacherId);
+	ListResult<ResTeacherBean> getTeacherLists(Integer start, Integer length, int level, int targetId);
 
 }

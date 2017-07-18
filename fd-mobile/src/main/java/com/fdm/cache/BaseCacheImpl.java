@@ -12,6 +12,8 @@ import org.springframework.data.redis.core.RedisTemplate;
  */
 public class BaseCacheImpl {
 
+	public static final String NAME_SPACE = "future:";
+	
 	@Resource
 	protected RedisTemplate<String, Object> redisTemplate;
 

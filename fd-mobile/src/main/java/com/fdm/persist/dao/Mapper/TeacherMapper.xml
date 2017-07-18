@@ -4,105 +4,42 @@
 
 	
 	<select id="selectTeachersInPage" resultType="TeacherBean">
-		SELECT * 
-		FROM teacher 
+		SELECT
+			t.tid,
+			t.`name`,
+			t.brief,
+			t.detail,
+			t.img,
+			p. LEVEL,
+			p.direction,
+			tt.targetId
+		FROM
+			teacher t
+		left JOIN teacher_on_phone p
+		on t.tid = p.tid
+		left join teacher_target tt
+		on t.tid = tt.tid
 		<where>
-			<if test="type != null and type != 0">type = #{type}</if>
-			<if test="homeId != null">and homeId = #{homeId}</if>
+			<if test="targetId != null and targetId > 0">tt.targetId = #{targetId}</if>
+			<if test="level != null and level > 0">and p.level =#{level}</if>
         </where>
-        ORDER BY homeId,type,sort desc
+        ORDER BY t.sort desc
 		LIMIT #{start}, #{pageSize}
 	</select>
 
 	<select id="selectTotal" resultType="java.lang.Integer">
 		SELECT count(*) 
-		FROM teacher 
+		FROM
+			teacher t
+		left JOIN teacher_on_phone p
+		on t.tid = p.tid
+		left join teacher_target tt
+		on t.tid = tt.tid
 		<where>
-			<if test="type != null and type != 0">type = #{type}</if>
-			<if test="homeId != null">and homeId = #{homeId}</if>
+			<if test="targetId != null and targetId > 0">tt.targetId = #{targetId}</if>
+			<if test="level != null and level > 0">and p.level =#{level}</if>
+       		<if test="type != null and level > 0">and p.level =#{level}</if>
+     
         </where>
 	</select>
-	
-	<select id="selectTeacherById" resultType="TeacherBean">
-		SELECT * 
-		FROM teacher 
-		where tid = #{tid}
-	</select>
-	
-	<insert id="insert" parameterType="TeacherBean">
-		insert into teacher (tid, name, brief, img, icon, type ,sort, homeId, detail)
-		values (#{tid}, #{name}, #{brief}, #{img}, #{icon}, #{type}, #{sort}, #{homeId}, #{detail});
-	
-	</insert>
-	
-	<insert id="update" parameterType="TeacherBean">
-		UPDATE teacher
-		<set>
-			<if test="name != null">
-				name = #{name},
-			</if>
-			<if test="brief != null">
-				brief = #{brief},
-			</if>
-			<if test="img != null">
-				img = #{img},
-			</if>
-			<if test="icon != null">
-				icon = #{icon},
-			</if>
-			<if test="homeId != null">
-				homeId = #{homeId},
-			</if>
-			<if test="detail != null">
-				detail = #{detail},
-			</if>
-			<if test="sort != null and sort > 0">
-				sort = #{sort},
-			</if>
-			<if test="type != null and type > 0">
-				type = #{type},
-			</if>
-			<if test="atHome != null and atHome > 0">
-				atHome = #{atHome},
-			</if>
-		</set>
-		where tid = #{tid}
-	</insert>
-	
-	<delete id="deleteById">
-		DELETE FROM teacher WHERE tid = #{tid}
-	</delete>
-	
-	
-		
-	<!-- 插入数据 -->
-	<insert id="insertTeacherHome">
-		INSERT INTO teacher_home
-		(aid,
-		homeId,
-		teacherId)
-		VALUES
-		<foreach collection="data" item="item" separator="," >
-			(#{item.aid},
-			#{item.homeId},
-			#{item.teacherId})
-		</foreach>
-	</insert>
-	
-	<delete id="deleteTeacherHome">
-		DELETE FROM teacher_home WHERE teacherId = #{teacherId}
-	</delete>
-	
-	<select id="selectTeacherHome" resultType="TeacherHomeBean">
-		SELECT * 
-		FROM teacher_home 
-		where teacherId = #{teacherId}
-	</select>
-
-	<select id="selectHomeCount" resultType="java.lang.Integer">
-		SELECT count(*) 
-		FROM teacher_home 
-		where teacherId = #{teacherId}
-	</select>
-	
 </mapper>

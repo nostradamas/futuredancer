@@ -17,33 +17,9 @@
 	</select>
 	
 	<select id="selectHomeById" resultType="HomeBean">
-		SELECT * 
-		FROM home 
+		SELECT *
+		FROM home
 		where hid = #{hid};
 	</select>
-	<insert id="insert" parameterType="StudentBean">
-		insert into home (hid, name, parentId, isLeaf, isShow ,bannerCode, sort)
-		values (#{hid}, #{name}, #{parentId}, #{isLeaf}, #{isShow}, #{bannerCode}, #{sort});
-	
-	</insert>
-	
-	<insert id="update" parameterType="StudentBean">
-		UPDATE home
-		<set>
-			<if test="name != null">
-				name = #{name},
-			</if>
-			<if test="sort != null and sort > 0">
-				sort = #{sort},
-			</if>
-		</set>
-		where hid = #{hid}
-	</insert>
-	
-	<delete id="deleteById">
-		DELETE FROM home WHERE hid = #{hid}
-	</delete>
-	
-	
 
 </mapper>

@@ -39,19 +39,22 @@ public class NewsServiceImpl implements NewsService {
 		int totalSize = newsImpl.selectTotal(params);
 		List<NewsBean> beans = newsImpl.selectNewsInPage(params);
 		List<ResNewsListBean> resData = new ArrayList<>();
-		for(NewsBean b : beans){
-			String createTime =  sdf.format(new Date());  
-			ResNewsListBean re = new ResNewsListBean();
-			re.setBrief(b.getBrief());
-			if(b.getCreateTime() != null) {
-				createTime = sdf.format(b.getCreateTime());
+		if(totalSize > 0 && beans != null){
+			for(NewsBean b : beans){
+				String createTime =  sdf.format(new Date());  
+				ResNewsListBean re = new ResNewsListBean();
+				re.setBrief(b.getBrief());
+				if(b.getCreateTime() != null) {
+					createTime = sdf.format(b.getCreateTime());
+				}
+				re.setCreateTime(createTime);
+				re.setImg(b.getImg());
+				re.setNid(b.getNid());
+				re.setTitle(b.getTitle());
+				resData.add(re);
 			}
-			re.setCreateTime(createTime);
-			re.setImg(b.getImg());
-			re.setNid(b.getNid());
-			re.setTitle(b.getTitle());
-			resData.add(re);
 		}
+		
 		result.setData(resData);
 		result.setTotalSize(totalSize);
 		return result;

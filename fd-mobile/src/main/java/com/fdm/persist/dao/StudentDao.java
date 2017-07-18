@@ -3,8 +3,8 @@ package com.fdm.persist.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.fdm.model.QuestionBean;
 import com.fdm.model.StudentBean;
-import com.fdm.model.StudentHomeBean;
 
 
 
@@ -22,20 +22,6 @@ public interface StudentDao {
 
 	StudentBean selectStudentById(String id);
 
-	int insert(StudentBean bean);
+	int insertQuestion(QuestionBean bean);
 
-	int update(StudentBean bean);
-
-	int deleteById(String id);
-
-	int insertStudentHome(List<StudentHomeBean> data);
-
-	int deleteStudentHome(String studentId);
-	
-	List<StudentHomeBean> selectStudentHome(String studentId);
-
-	int selectHomeCount(String studentId);
-
-
-	
 }

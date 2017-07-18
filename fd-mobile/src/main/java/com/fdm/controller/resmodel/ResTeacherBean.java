@@ -1,6 +1,8 @@
-package com.fdm.model;
+package com.fdm.controller.resmodel;
 
-public class TeacherBean {
+import com.fdm.model.enumModel.Teacher_direction;
+
+public class ResTeacherBean {
 
 	private String tid;
 	private String name;// 姓名
@@ -10,6 +12,8 @@ public class TeacherBean {
 	private int level;// 教师类型1明星老师，2总监级别，3高级教师，4普通教师
 	private int direction;// 教学方向1中国舞，2芭蕾舞，3拉丁舞，4编导，5国际标准舞
 	private int targetId;// 关联主页id
+	
+	private String tag;// 
 
 	public String getTid() {
 		return tid;
@@ -75,4 +79,17 @@ public class TeacherBean {
 		this.targetId = targetId;
 	}
 
+	public String getTag() {
+		return tag;
+	}
+
+	/*public void setTag(String tag) {
+		this.tag = tag;
+	}*/
+
+	public void setTag(int direction) {
+		String directions = Teacher_direction.getName(direction);
+		this.tag = directions;
+	}
+	
 }

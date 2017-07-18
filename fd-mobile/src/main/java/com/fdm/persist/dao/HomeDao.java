@@ -19,10 +19,4 @@ public interface HomeDao {
 
 	HomeBean selectHomeById(String id);
 
-	int insert(HomeBean bean);
-
-	int update(HomeBean bean);
-
-	int deleteById(String id);
-
 }

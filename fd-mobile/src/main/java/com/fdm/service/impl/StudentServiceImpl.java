@@ -7,15 +7,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.fdm.constants.RescodeConstants;
 import com.fdm.controller.res.ListResult;
+import com.fdm.controller.resmodel.ResStudentBean;
+import com.fdm.model.QuestionBean;
 import com.fdm.model.StudentBean;
-import com.fdm.model.StudentHomeBean;
 import com.fdm.persist.dao.StudentDao;
 import com.fdm.service.StudentService;
-import com.fdm.service.exception.ServiceException;
 import com.fdm.util.AppTextUtil;
 import com.fdm.util.StringUtil;
 
@@ -27,8 +25,8 @@ public class StudentServiceImpl  implements StudentService {
 	StudentDao studentImpl;
 	
 	@Override
-	public ListResult<StudentBean>  getStudents(int start, int pageSize,String homeId) {
-		ListResult<StudentBean> result = new ListResult<>();
+	public ListResult<ResStudentBean>  getStudents(int start, int pageSize,String homeId) {
+		ListResult<ResStudentBean> result = new ListResult<>();
 		Map<String, Object> params = new HashMap<>();
 		params.put("start", start);
 		params.put("pageSize", pageSize);
@@ -37,7 +35,21 @@ public class StudentServiceImpl  implements StudentService {
 		}
 		int totalSize = studentImpl.selectTotal(params);
 		List<StudentBean> beans = studentImpl.selectStudentsInPage(params);
-		result.setData(beans);
+		List<ResStudentBean> resData = new ArrayList<>();
+		
+		if(totalSize > 0 && beans != null){
+			for(StudentBean s : beans){
+				ResStudentBean res = new ResStudentBean();
+				res.setSid(s.getSid());
+				res.setBrief(s.getBrief());
+				res.setDetail(s.getDetail());
+				res.setImg(s.getImg());
+				res.setName(s.getName());
+				resData.add(res);
+			}
+		}
+		
+		result.setData(resData);
 		result.setTotalSize(totalSize);
 		return result;
 	}
@@ -48,75 +60,9 @@ public class StudentServiceImpl  implements StudentService {
 	}
 
 	@Override
-	public boolean saveStudent(StudentBean bean) {
-		boolean flag = false;
-		if (bean == null)
-			return false;
-
-		boolean isNew = StringUtil.checkEmpty(bean.getSid());
-		if (isNew) {
-			bean.setSid(AppTextUtil.getPrimaryKey());
-			flag = studentImpl.insert(bean) > 0;
-			if (!flag) {
-				throw new ServiceException(RescodeConstants.getInstance().get("object_save_fail"));
-			}
-		} else {
-			flag = studentImpl.update(bean) > 0;
-			if (!flag) {
-				throw new ServiceException(RescodeConstants.getInstance().get("object_save_fail"));
-			}
-		}
-		return flag;
-	}
-
-	@Transactional(rollbackFor = Exception.class)
-	@Override
-	public boolean deleteStudentById(String id) throws ServiceException {
-		boolean flag = false;
-		flag = studentImpl.deleteById(id) > 0;
-		if (!flag) {
-			new ServiceException("fail");
-		}
-		flag = studentImpl.deleteStudentHome(id) > 0;
-		if (!flag) {
-			new ServiceException("fail");
-		}
-		return flag;
-	}
-	
-	@Transactional(rollbackFor = Exception.class)
-	@Override
-	public boolean saveHomeId(String[] homeIds, String studentId) throws ServiceException {
-		boolean flag = true;
-		StudentBean student = studentImpl.selectStudentById(studentId);
-		if (student == null) {
-			throw new ServiceException(RescodeConstants.getInstance().get("object_is_not_exist"), "学生");
-		}
-		if(homeIds == null || homeIds.length == 0) {
-			throw new ServiceException(RescodeConstants.getInstance().get("object_is_not_exist"), "选择页面");
-		}
-		int count = studentImpl.selectHomeCount(studentId);
-		if(count > 0) {
-			flag = studentImpl.deleteStudentHome(studentId) > 0;
-			if(!flag) {
-				throw new ServiceException(RescodeConstants.getInstance().get("object_del_fail"));
-			}
-		}
-		List<StudentHomeBean> data = new ArrayList<>();
-		for(String hid : homeIds) {
-			StudentHomeBean s = new StudentHomeBean();
-			s.setAid(AppTextUtil.getPrimaryKey());
-			s.setStudentId(studentId);
-			s.setHomeId(hid);
-			data.add(s);
-		}
-		flag = studentImpl.insertStudentHome(data) > 0;
-		return flag;
-	}
-
-	@Override
-	public List<StudentHomeBean> selectHomesByStudentId(String studentId) {
-		return studentImpl.selectStudentHome(studentId);
+	public boolean saveQuestion(QuestionBean bean) {
+		bean.setQid(AppTextUtil.getPrimaryKey());
+		return studentImpl.insertQuestion(bean) > 0;
 	}
 
 }
