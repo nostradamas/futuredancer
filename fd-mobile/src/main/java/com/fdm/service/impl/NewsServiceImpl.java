@@ -70,4 +70,35 @@ public class NewsServiceImpl implements NewsService {
 		return newsImpl.selectNewsById(nid);
 	}
 
+	@Override
+	public ListResult<ResNewsListBean> getNewsListInType(int page, int pageSize, int type) {
+		ListResult<ResNewsListBean> result = new ListResult<>();
+		DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Map<String, Object> params = new HashMap<>();
+		params.put("start", page);
+		params.put("pageSize", pageSize);
+		params.put("targetId", type);
+		int totalSize = newsImpl.selectTotalInType(params);
+		List<NewsBean> beans = newsImpl.selectNewsInPageInType(params);
+		List<ResNewsListBean> resData = new ArrayList<>();
+		if(totalSize > 0 && beans != null){
+			for(NewsBean b : beans){
+				String createTime =  sdf.format(new Date());  
+				ResNewsListBean re = new ResNewsListBean();
+				re.setBrief(b.getBrief());
+				if(b.getCreateTime() != null) {
+					createTime = sdf.format(b.getCreateTime());
+				}
+				re.setCreateTime(createTime);
+				re.setImg(b.getImg());
+				re.setNid(b.getNid());
+				re.setTitle(b.getTitle());
+				resData.add(re);
+			}
+		}
+		
+		result.setData(resData);
+		result.setTotalSize(totalSize);
+		return result;
+	}
 }

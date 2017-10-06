@@ -6,7 +6,6 @@ public class ResStudentBean {
 	private String name;// 姓名
 	private String brief;// 简介
 	private String img;// 封面
-	private String detail;
 
 	public String getSid() {
 		return sid;
@@ -40,12 +39,5 @@ public class ResStudentBean {
 		this.img = img;
 	}
 
-	public String getDetail() {
-		return detail;
-	}
-
-	public void setDetail(String detail) {
-		this.detail = detail;
-	}
 
 }

@@ -22,13 +22,14 @@ public class TeacherServiceImpl  implements TeacherService {
 	TeacherDao teacherImpl;
 
 	@Override
-	public ListResult<ResTeacherBean> getTeacherLists(Integer start, Integer pageSize, int level, int targetId) {
+	public ListResult<ResTeacherBean> getTeacherLists(Integer start, Integer pageSize, int level, int targetId, int type) {
 		ListResult<ResTeacherBean> result = new ListResult<>();
 		Map<String, Object> params = new HashMap<>();
 		params.put("start", start);
 		params.put("pageSize", pageSize);
 		params.put("targetId", targetId);
 		params.put("level", level);
+		params.put("direction", type);
 		int totalSize = teacherImpl.selectTotal(params);
 		List<TeacherBean> beans = teacherImpl.selectTeachersInPage(params);
 		List<ResTeacherBean> resData = new ArrayList<>();

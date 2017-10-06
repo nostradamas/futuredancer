@@ -9,7 +9,7 @@ public class EditNewsDetailParam {
 	@NotEmpty(message="标题不能为空")
 	private String title;// 新闻标题
 	@NotEmpty(message="内容不能为空")
-	@Length(min=0, max=30000)
+	@Length(min=0, max=100000)
 	private String content;// 新闻内容
 
 	@Length(min=0, max=300)

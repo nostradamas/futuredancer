@@ -27,6 +27,10 @@ public interface NewsDao {
 	int update(NewsBean bean);
 
 	int deleteById(String id);
+	
+	int selectTotalInType(Map<String, Object> params);
+
+	List<NewsBean> selectNewsInPageInType(Map<String, Object> params);
 
 	
 	///==========新闻分类==========////
@@ -40,5 +44,6 @@ public interface NewsDao {
 	int deleteCategoryById(String id);
 
 	NewsCategoryBean selectNewsCategoryById(String id);
+
 
 }

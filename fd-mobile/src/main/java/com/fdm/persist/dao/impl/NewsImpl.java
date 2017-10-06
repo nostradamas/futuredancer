@@ -73,6 +73,16 @@ public class NewsImpl extends BaseImpl  implements NewsDao{
 	public NewsCategoryBean selectNewsCategoryById(String id) {
 		return sqlSessionTemplate.selectOne(NAME_SPACE + ".selectNewsCategoryById", id);
 	}
+
+	@Override
+	public int selectTotalInType(Map<String, Object> params) {
+		return sqlSessionTemplate.selectOne(NAME_SPACE + ".selectTotalInType", params);
+	}
+
+	@Override
+	public List<NewsBean> selectNewsInPageInType(Map<String, Object> params) {
+		return sqlSessionTemplate.selectList(NAME_SPACE + ".selectNewsInPageInType", params);
+	}
 	
 
 }

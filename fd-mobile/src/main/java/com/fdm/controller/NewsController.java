@@ -41,9 +41,27 @@ public class NewsController {
 		ListResult<ResNewsListBean> result = new ListResult<ResNewsListBean>();
 		try {
 			String sch = StringUtil.toString(request.getParameter("sch"), null);//
-			int page = NumUtil.toInt(request.getParameter("page"), 1);
+			int page = NumUtil.toInt(request.getParameter("page"), 0);
 			int pageSize = NumUtil.toInt(request.getParameter("pageSize"), 10);
 			result = newsServiceImpl.getNewsList(page, pageSize, cid, sch);
+		} catch (ServiceException e) {
+			result.setFlag(false);
+			result.setMsg(e.getServiceMsg());
+		}
+		return result;
+	}
+	
+	@RequestMapping("/getListInType/{type}")
+	@ResponseBody
+	public ListResult<ResNewsListBean> getListInType(HttpServletRequest request, HttpServletResponse response,
+			@PathVariable Integer type) {
+		response.setContentType("application/json;charset=UTF-8");//防止数据传递乱码
+		ListResult<ResNewsListBean> result = new ListResult<ResNewsListBean>();
+		try {
+			int page = NumUtil.toInt(request.getParameter("page"), 0);
+			type = NumUtil.toInt(type, 1);
+			int pageSize = NumUtil.toInt(request.getParameter("pageSize"), 10);
+			result = newsServiceImpl.getNewsListInType(page, pageSize, type);
 		} catch (ServiceException e) {
 			result.setFlag(false);
 			result.setMsg(e.getServiceMsg());

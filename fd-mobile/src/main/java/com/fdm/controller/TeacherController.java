@@ -47,7 +47,8 @@ public class TeacherController {
 			Integer pageSize = NumUtil.toInt(request.getParameter("pageSize"), 6);// 默认显示6个
 			int level = NumUtil.toInt(request.getParameter("level"), 0);//默认等级不查
 			int targetId = NumUtil.toInt(request.getParameter("targetId"), 0);// 默认查不查所属类别
-			result = teacherServiceImpl.getTeacherLists(page, pageSize, level, targetId);
+			int type = NumUtil.toInt(request.getParameter("type"), 0);// 所属类型
+			result = teacherServiceImpl.getTeacherLists(page, pageSize, level, targetId, type);
 		} catch (ServiceException e) {
 			result.setFlag(false);
 			result.setMsg(e.getServiceMsg());

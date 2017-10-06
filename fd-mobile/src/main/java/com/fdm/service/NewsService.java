@@ -22,5 +22,7 @@ public interface NewsService {
 	NewsBean getNewsById(String nid);
 	
 	List<NewsCategoryBean> getNewsCategory(String sch_name);
+
+	ListResult<ResNewsListBean> getNewsListInType(int page, int pageSize, int type);
 	
 }

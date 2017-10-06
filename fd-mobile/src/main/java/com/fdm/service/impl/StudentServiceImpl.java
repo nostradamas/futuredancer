@@ -15,7 +15,6 @@ import com.fdm.model.StudentBean;
 import com.fdm.persist.dao.StudentDao;
 import com.fdm.service.StudentService;
 import com.fdm.util.AppTextUtil;
-import com.fdm.util.StringUtil;
 
 
 @Service
@@ -25,14 +24,11 @@ public class StudentServiceImpl  implements StudentService {
 	StudentDao studentImpl;
 	
 	@Override
-	public ListResult<ResStudentBean>  getStudents(int start, int pageSize,String homeId) {
+	public ListResult<ResStudentBean>  getStudents(int start, int pageSize) {
 		ListResult<ResStudentBean> result = new ListResult<>();
 		Map<String, Object> params = new HashMap<>();
 		params.put("start", start);
 		params.put("pageSize", pageSize);
-		if(!StringUtil.checkEmpty(homeId)){
-			params.put("homeId", homeId);
-		}
 		int totalSize = studentImpl.selectTotal(params);
 		List<StudentBean> beans = studentImpl.selectStudentsInPage(params);
 		List<ResStudentBean> resData = new ArrayList<>();
@@ -42,7 +38,6 @@ public class StudentServiceImpl  implements StudentService {
 				ResStudentBean res = new ResStudentBean();
 				res.setSid(s.getSid());
 				res.setBrief(s.getBrief());
-				res.setDetail(s.getDetail());
 				res.setImg(s.getImg());
 				res.setName(s.getName());
 				resData.add(res);

@@ -4,8 +4,10 @@
 
 	
 	<select id="selectStudentsInPage" resultType="StudentBean">
-		SELECT s.* 
-		FROM student s 
+		SELECT s.sid,ifnull(p.name, s.name) as name,ifnull(p.brief, s.brief) as brief,ifnull(p.img, s.img) as img
+		FROM student_on_phone p 
+		LEFT JOIN student s
+		on p.sid = s.sid
 		<where>
 			s.isMobile = 1
         </where>
@@ -15,10 +17,7 @@
 
 	<select id="selectTotal" resultType="java.lang.Integer">
 		SELECT count(*) 
-		FROM student s 
-		<where>
-			s.isMobile = 1
-        </where>
+		FROM student_on_phone 
 	</select>
 	
 	

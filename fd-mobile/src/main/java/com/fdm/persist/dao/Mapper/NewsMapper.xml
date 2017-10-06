@@ -20,7 +20,7 @@
 		</association>
 	</resultMap>
 	<select id="selectNewsInPage" resultMap="NewsResultMap">
-		SELECT n.*,c.cid,c.name as cName 
+		SELECT n.title,n.createTime,n.img,n.nid,n.brief,c.cid,c.name as cName 
 		FROM news n
 		left join news_category c
 		on n.cid = c.cid
@@ -51,7 +51,7 @@
 	</select>
 	
 	<select id="selectNewsById" resultMap="NewsResultMap">
-		SELECT  n.*,c.cid,c.name as cName 
+		SELECT  n.title,n.createTime,n.img,n.nid,n.brief,c.cid,c.name as cName,n.content 
 		FROM news n
 		left join news_category c
 		on n.cid = c.cid
@@ -135,6 +135,28 @@
 	<delete id="deleteCategoryById">
 		DELETE FROM news_category WHERE cid=#{cid}
 	</delete>
+
+	<select id="selectNewsInPageInType" resultType="NewsBean">
+		SELECT n.title,n.createTime,n.img,n.nid,n.brief
+		FROM news_on_phone p 
+		left join news n
+		on p.nid = n.nid
+		<where>
+			<if test="targetId != null">and p.targetId = #{targetId}</if>
+        </where>
+        ORDER BY n.sort DESC, n.createTime DESC
+		LIMIT #{start}, #{pageSize}
+	</select>
+
+	<select id="selectTotalInType" resultType="java.lang.Integer">
+		SELECT count(*) 
+		FROM news_on_phone p 
+		left join news n
+		on p.nid = n.nid
+		<where>
+			<if test="targetId != null">and p.targetId = #{targetId}</if>
+        </where>
+	</select>
 	
 	
 </mapper>

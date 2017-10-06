@@ -13,7 +13,7 @@ import com.fdm.model.StudentBean;
  */
 public interface StudentService {
 
-	ListResult<ResStudentBean> getStudents(int page, int pageSize, String homeId);
+	ListResult<ResStudentBean> getStudents(int page, int pageSize);
 
 	StudentBean getStudentById(String id);
 

@@ -5,6 +5,7 @@
 	
 	<select id="selectTeachersInPage" resultType="TeacherBean">
 		SELECT
+			DISTINCT
 			t.tid,
 			t.`name`,
 			t.brief,
@@ -22,6 +23,7 @@
 		<where>
 			<if test="targetId != null and targetId > 0">tt.targetId = #{targetId}</if>
 			<if test="level != null and level > 0">and p.level =#{level}</if>
+			<if test="direction != null and direction > 0">and p.direction =#{direction}</if>
         </where>
         ORDER BY p.level,t.sort desc
 		LIMIT #{start}, #{pageSize}
@@ -38,7 +40,7 @@
 		<where>
 			<if test="targetId != null and targetId > 0">tt.targetId = #{targetId}</if>
 			<if test="level != null and level > 0">and p.level =#{level}</if>
-       		<if test="type != null and level > 0">and p.level =#{level}</if>
+			<if test="direction != null and direction > 0">and p.direction =#{direction}</if>
      
         </where>
 	</select>

@@ -11,6 +11,6 @@ import com.fdm.controller.resmodel.ResTeacherBean;
  */
 public interface TeacherService {
 
-	ListResult<ResTeacherBean> getTeacherLists(Integer start, Integer length, int level, int targetId);
+	ListResult<ResTeacherBean> getTeacherLists(Integer start, Integer length, int level, int targetId, int type);
 
 }

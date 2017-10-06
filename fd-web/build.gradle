@@ -80,4 +80,6 @@ task deploy(dependsOn:copy) << {
     }
   }
 }
-
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

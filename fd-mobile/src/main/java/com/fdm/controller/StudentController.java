@@ -13,7 +13,6 @@ import com.fdm.controller.resmodel.ResStudentBean;
 import com.fdm.service.StudentService;
 import com.fdm.service.exception.ServiceException;
 import com.fdm.util.NumUtil;
-import com.fdm.util.StringUtil;
 
 /**
  * 学生controller层
@@ -46,8 +45,7 @@ public class StudentController {
 			response.setContentType("application/json;charset=UTF-8");//防止数据传递乱码
 			Integer page = NumUtil.toInt(request.getParameter("page"), 0);
 			Integer pageSize = NumUtil.toInt(request.getParameter("pageSize"), 6);// 默认显示6个
-			String homeId = StringUtil.toString(request.getParameter("homeId"), null);
-			result = studentServiceImpl.getStudents(page, pageSize, homeId);
+			result = studentServiceImpl.getStudents(page, pageSize);
 		} catch (ServiceException e) {
 			result.setFlag(false);
 			result.setMsg(e.getServiceMsg());
