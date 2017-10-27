@@ -19,9 +19,9 @@ function getTeachers(hid, type){
         				$.each(teachers, function(i, item){
         					$html += '<div class="col-md-3 col-xs-6">';
         					$html += '<div class="teacher-info border-radius teacher-type1">';
-        					$html += '<img src="'+item.img+'"class="img-responsive zoom-img" alt="'+item.name+'">';
+        					$html += '<img src="'+item.img+'?imageView2/4/w/260/h/300/format/jpg/q/75|imageslim"class="img-responsive zoom-img" alt="'+item.name+'">';
         					$html += '<div class="view-caption">';
-        					$html += '<div class="teacher-head"><img src="'+item.icon+'"></div>';
+        					$html += '<div class="teacher-head"><img src="'+item.icon+'?imageView2/4/w/100/h/100/format/jpg/q/75|imageslim"></div>';
         					$html += '<p class="lh15">' + item.detail + '</p>';
         					$html += '</div>';
         					$html += '<h5>'+ item.name +'</h5></div></div>';
@@ -34,7 +34,7 @@ function getTeachers(hid, type){
                 		$.each(teachers, function(i, item){
         					$html += '<div class="col-md-3 col-xs-6 mt20 mb10">';
         					$html += '<div class="teacher-info teacher-type2 teacher-detail border-radius">';
-        					$html += '<img src="'+item.img+'"class="img-responsive zoom-img" alt="'+item.name+'">';
+        					$html += '<img src="'+item.img+'?imageView2/4/w/260/h/300/format/jpg/q/75|imageslim"class="img-responsive zoom-img" alt="'+item.name+'">';
         					$html += '<h5>'+ item.name +'</h5>';
         					var brief = item.brief;
         					if(item.brief!=null ){
@@ -46,7 +46,7 @@ function getTeachers(hid, type){
         					}
         					$html += '<div class="p5">'+ brief +'</div>';
         					$html += '<div class="view-caption">';
-        					$html += '<div class="teacher-head"><img src="'+item.icon+'"></div>';
+        					$html += '<div class="teacher-head"><img src="'+item.icon+'?imageView2/4/w/100/h/100/format/jpg/q/75|imageslim"></div>';
         					$html += '<p class="lh15">' + item.detail + '</p>';
         					$html += '</div></div></div>';
             				

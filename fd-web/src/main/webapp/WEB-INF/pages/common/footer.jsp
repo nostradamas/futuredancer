@@ -69,7 +69,7 @@
 		</div>
 	</div>
 	<script type="text/javascript"> 
-		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); 
-		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3953df38d160f13f43d1081518b23b72' type='text/javascript'%3E%3C/script%3E")) 
+		//var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); 
+		//document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F3953df38d160f13f43d1081518b23b72' type='text/javascript'%3E%3C/script%3E")) 
 	</script>
 </footer>

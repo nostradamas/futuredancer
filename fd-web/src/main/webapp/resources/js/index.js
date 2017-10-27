@@ -43,10 +43,10 @@ function getIndexTeachers(hid){
     					var j = 1; 
     					$html += '<div class="index-teacher-box">';
     					$html += '<div class="teacher-info border-radius teacher-type1">';
-    					$html += '<img src="'+item.img+'"class="img-responsive zoom-img" alt="'+item.name+'">';
+    					$html += '<img src="'+item.img+'?imageView2/4/w/280/h/290/format/jpg/q/75|imageslim"class="img-responsive zoom-img" alt="'+item.name+'">';
     					$html += '<h4>' + item.name + '</h4>';
     					$html += '<div class="view-caption">';
-    					$html += '<div class="teacher-head"><img src="'+item.icon+'"></div>';
+    					$html += '<div class="teacher-head"><img src="'+item.icon+'?imageView2/4/w/140/h/145/format/jpg/q/75|imageslim"></div>';
     					$html += '<p class="lh15">' + item.detail + '</p>';
     					$html += '</div>';
     					$html += '<h5>'+ item.brief +'</h5></div></div>';
@@ -66,6 +66,7 @@ function getIndexTeachers(hid){
     					'direction': 'vertical',
     					'slideshowSpeed': 6000,
     					'directionNav' : false,
+    					'pauseOnHover' : true,
     					'move' : 1,
     			        'manualControls' : '.slide-caption li',
 			        	'manualControlEvent': 'hover'

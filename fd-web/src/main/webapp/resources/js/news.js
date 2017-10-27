@@ -52,7 +52,7 @@ function getNews(page, pageSize, cid){
         		if(news != null) {
         			$.each(news, function(i, item){
         				$html += '<div class="news-item" onclick="viewNews(\''+item.createCode+'\')">';
-        				$html += '	<div class="news-item-img"><img src="' + item.img + '"></div>';
+        				$html += '	<div class="news-item-img"><img src="' + item.img + '|imageView2/4/w/150/h/90|imageslim"></div>';
         				$html += '	<div class="news-item-content">';
         				$html += '   	<h3>' + item.title + '<span class="news-date">'+item.createTime+'</span><i class="clear"></i></h3>';
         				$html += '  	<div class="news-item-brief">'+item.brief+'</div>';

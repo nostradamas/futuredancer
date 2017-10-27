@@ -146,7 +146,7 @@ function getBanners(code, isSub){
         			if(typeof(item.linkUrl) != 'undefined' && item.linkUrl != null){
         				click = 'onclick="location=\''+SERVER_PATH + item.linkUrl+'\'"';
         			}
-        			$html += '<li '+click+' style="background-image: url(' + item.imgUrl + ');">';
+        			$html += '<li '+click+' style="background-image: url(' + item.imgUrl + '?imageslim);">';
             		$html += '</li>';
         		});
         		$html += '</ul>';
@@ -226,7 +226,7 @@ function getSubNav(homeId, tabId){
     				$tabs += ' <div class="portfolio-box-caption">';
     				$tabs += ' <div class="portfolio-box-caption-content">';
     				$tabs += ' <div class="project-category text-faded">';
-    				$tabs += ' <i class="tab-icon" style="background-image:url('+item.icon+')"></i>';
+    				$tabs += ' <i class="tab-icon" style="background-image:url('+item.icon+'imageslim)"></i>';
     				$tabs += ' </div>';
     				$tabs += ' <div class="project-name">' + item.name + ' </div>';
     				$tabs += ' </div></div></a></div>';
@@ -258,13 +258,13 @@ function getItemContent(homeId){
     				$('#'+item.contentId).find('h4').text(item.subTitle);
     				if(!isMobile.any()){
     					if($('#'+item.contentId+' .content-img').find('img').length > 0){
-        					$('#'+item.contentId+' .content-img').find('img').attr('src',item.background);
+        					$('#'+item.contentId+' .content-img').find('img').attr('src',item.background+'?imageslim');
         				} else {
-        					$('#'+item.contentId).css('background-image','url('+item.background+')');
+        					$('#'+item.contentId).css('background-image','url('+item.background+'?imageslim)');
         				}
     				} else {
     					$('#'+item.contentId+' .content-img').hide();
-    					$('#'+item.contentId).css('background-image','url('+item.background+')');
+    					$('#'+item.contentId).css('background-image','url('+item.background+'?imageslim)');
     				}
     				
             		$('#'+item.contentId).find('p').html(item.content);
@@ -273,8 +273,8 @@ function getItemContent(homeId){
             		
             		if(item.pic!=null){
 
-            			$('#'+item.contentId +'-center').find('.mauto').attr('src', item.pic);
-            			$('#'+item.contentId).find('.sub-Img-css').attr('src', item.pic);
+            			$('#'+item.contentId +'-center').find('.mauto').attr('src', item.pic+'?imageslim');
+            			$('#'+item.contentId).find('.sub-Img-css').attr('src', item.pic+'?imageslim');
             		}
             		if(item.type == 1) {
             			$('#'+item.contentId).find('span').html(item.title);
@@ -313,25 +313,25 @@ function getHomeContent(homeId, isclick){
     					}
     					$('#'+item.contentId).find('h3').html(title);
     				}
-            		$('#'+item.contentId + '-content').find('img').attr('src',item.pic);
+            		$('#'+item.contentId + '-content').find('img').attr('src',item.pic+'?imageslim');
             		$('#'+item.contentId).find('p').html(item.brief);
             		if(item.subImg!=null){
-            			$('#'+item.contentId).find('.sub-Img-css').attr('src',item.subImg);
+            			$('#'+item.contentId).find('.sub-Img-css').attr('src',item.subImg+'?imageslim');
             		}
             		if(item.icon!=null){
-            			$('#'+item.contentId).find('i.art-icon').css('background-image','url('+item.icon+')');
+            			$('#'+item.contentId).find('i.art-icon').css('background-image','url('+item.icon+'?imageslim)');
             		}
     				
     				if(!isMobile.any()){
     					if($('#'+item.contentId).find('img').length > 0){
-        					$('#'+item.contentId +' .content-img').find('img').attr('src',item.background);
-        					$('#'+item.contentId +' .content-img-1').find('img').attr('src',item.background);
+        					$('#'+item.contentId +' .content-img').find('img').attr('src',item.background+'?imageslim');
+        					$('#'+item.contentId +' .content-img-1').find('img').attr('src',item.background+'?imageslim');
         				} else {
-        					$('#'+item.contentId).css('background-image','url('+item.background+')');
+        					$('#'+item.contentId).css('background-image','url('+item.background+'?imageslim)');
         				}
     				} else {
     					$('#'+item.contentId+' .content-img').hide();
-    					$('#'+item.contentId).css('background-image','url('+item.background+')');
+    					$('#'+item.contentId).css('background-image','url('+item.background+'?imageslim)');
     				}
             		var type = '&type=' +  item.contentType ;
             		
@@ -376,7 +376,7 @@ function getEnvironment(type, objId){
         		var $html = '<ul class="slides">';
     			$.each(environments, function(i, item){
 					$html += '<li>';
-					$html += '  <img src="' + item.url + '" class="img-responsive zoom-img" alt="'+item.name+'">';
+					$html += '  <img src="' + item.url + '?imageView2/4/w/280/h/290/format/jpg/q/75|imageslim" class="img-responsive zoom-img" alt="'+item.name+'">';
 					$html += '</li>';
         		});
     			$html += '</ul>'
@@ -386,6 +386,7 @@ function getEnvironment(type, objId){
 			      animation: "slide",
 			      slideshow: true,    
 			      animationLoop: true,
+				  pauseOnHover : true,
 			      itemWidth: 200,
 			      itemMargin: 10,
 				  move : 1,
@@ -456,10 +457,10 @@ function getTeacherLists(hid, contentId, atHome, pageSize){
         				$.each(teachers, function(i, item){
         					$html += '<li><div class="border-radius">';
         					$html += '<div class="teacher-info">';
-        					$html += '<img src="'+item.img+'"class="img-responsive zoom-img" alt="'+item.name+'">';
+        					$html += '<img src="'+item.img+'?imageView2/4/w/280/h/290/format/jpg/q/75|imageslim"class="img-responsive zoom-img" alt="'+item.name+'">';
         					$html += '<h4 class="text-left">'+ item.name +'</h4>';
         					$html += '<div class="view-caption">';
-        					$html += '<div class="teacher-head"><img src="'+item.icon+'"></div>';
+        					$html += '<div class="teacher-head"><img src="'+item.icon+'?imageView2/4/w/140/h/145/format/jpg/q/75|imageslim"></div>';
         					$html += '<p class="lh15">' + item.detail + '</p>';
         					$html += '</div></div>';
         					$html += '<h5 class="text-left">'+ item.brief +'</h5></div></li>';
@@ -472,6 +473,7 @@ function getTeacherLists(hid, contentId, atHome, pageSize){
               		      animation: "slide",
               		      slideshow: true,    
               		      animationLoop: true,
+              			  pauseOnHover : true,
               		      itemWidth: 200,
               		      itemMargin: 10,
               		      move: 1,
@@ -515,7 +517,7 @@ function getExperts(hid){
         					var title = item.name;
         					$html += '<div class="col-md-6 col-xs-12">';
         					$html += '  <div class="subject-box">';
-        					$html += '   <img src="'+item.img+'" alt="'+item.name+'">';
+        					$html += '   <img src="'+item.img+'?imageView2/4/w/280/h/290/format/jpg/q/75|imageslim" alt="'+item.name+'">';
         					$html += '   <div class="subject-foot"><h3><span class="subject-title">'+item.name+'</span>主讲人：'+item.teacher+'</h3>';
         					$html += '   <p class="l15">'+item.brief+'</p></div>';
         					$html += '  </div>';
@@ -550,7 +552,7 @@ function getStudentLists(homeId, page, pageSize, contentId, atHome){
         			$.each(students, function(i, item){
         				$html += '<li>';
         				$html += '  <div class="teacher-info teacher-detail border-radius">';
-        				$html += '  <img src="' + item.img + '" class="img-responsive zoom-img" alt="'+item.name+'">';
+        				$html += '  <img src="' + item.img + '?imageView2/4/w/280/h/290/format/jpg/q/75|imageslim" class="img-responsive zoom-img" alt="'+item.name+'">';
         				$html += '  <h5>' + item.name + '</h5>';
         				$html += '  <div>' + item.brief + '</div>';
         				$html += '  <div class="view-caption">';
@@ -564,9 +566,10 @@ function getStudentLists(homeId, page, pageSize, contentId, atHome){
         		      animation: "slide",
         		      slideshow: true,    
         		      animationLoop: true,
+        			  pauseOnHover : true,
         		      itemWidth: 200,
         		      itemMargin: 10,
-          		      move: 1,
+          		  move: 1,
         		      minItems: getGridSize(), // use function to pull in initial value
         		      maxItems: getGridSize() // use function to pull in initial value
         		    });
@@ -606,7 +609,7 @@ function getCLassLists(hid, page, pageSize, contentId, atHome){
         			$.each(classes, function(i, item){
         				$html += '<li>';
     					$html += '<div class="teacher-info border-radius" onclick="showVideo(\''+item.cid+'\')">';
-    					$html += '<img src="'+item.img+'"class="img-responsive zoom-img" alt="'+item.name+'">';
+    					$html += '<img src="'+item.img+'?imageView2/4/w/280/h/290/format/jpg/q/75|imageslim"class="img-responsive zoom-img" alt="'+item.name+'">';
     					$html += '<div class="view-caption">';
     					$html += '<div class="video-play"><img src="http://on01whf2s.bkt.clouddn.com/play.png"></div>';
     					$html += '</div></div>';
@@ -622,6 +625,7 @@ function getCLassLists(hid, page, pageSize, contentId, atHome){
         			      animation: "slide",
         			      slideshow: true,    
         			      animationLoop: true,
+        				  pauseOnHover : true,
         			      itemWidth: 200,
         			      itemMargin: 10,
               		      move: 1,
@@ -658,7 +662,7 @@ function getTirdEnvironment(type, objId){
         		var $html = '<ul class="slides">';
     			$.each(environments, function(i, item){
 					$html += '<li>';
-					$html += '  <img src="' + item.url + '" class="img-responsive zoom-img" alt="'+item.name+'">';
+					$html += '  <img src="' + item.url + '?imageView2/4/w/280/h/290/format/jpg/q/75|imageslim" class="img-responsive zoom-img" alt="'+item.name+'">';
 					$html += '</li>';
         		});
     			$html += '</ul>'
@@ -668,6 +672,7 @@ function getTirdEnvironment(type, objId){
 			      animation: "slide",
 			      slideshow: true,    
 			      animationLoop: true,
+			      pauseOnHover : true,
 			      itemWidth: 200,
 			      itemMargin: 10,
 				  move : 1,

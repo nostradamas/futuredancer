@@ -22,7 +22,7 @@ function getStudents(page, pageSize, contentId, setPage, homeId, atHome){
         			$.each(students, function(i, item){
         				$html += '<div class="col-md-3 col-xs-6 mt20 mb30">';
         				$html += '  <div class="teacher-info border-radius student-box">';
-        				$html += '  <img src="' + item.img + '" class="img-responsive zoom-img" alt="'+item.name+'">';
+        				$html += '  <img src="' + item.img + '?imageView2/4/w/260/h/300/format/jpg/q/75|imageslim" class="img-responsive zoom-img" alt="'+item.name+'">';
         				$html += '  <h4>' + item.name + '</h4>';
         				$html += '<div class="view-caption">';
     					$html += '<p class="lh15">' + item.detail + '</p>';

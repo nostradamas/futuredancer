@@ -21,7 +21,7 @@ function getClasses(page, pageSize, hid){
         			$.each(classes, function(i, item){
         				$html += '<div class="col-md-4 col-xs-6 mb40">';
     					$html += '<div class="teacher-info border-radius" onclick="showVideo(\''+item.cid+'\')">';
-    					$html += '<img src="'+item.img+'"class="img-responsive zoom-img" alt="'+item.name+'">';
+    					$html += '<img src="'+item.img+'?imageView2/4/w/360/h/230/format/jpg/q/75|imageslim"class="img-responsive zoom-img" alt="'+item.name+'">';
     					$html += '<div class="view-caption">';
     					$html += '<div class="video-play"><img src="http://on01whf2s.bkt.clouddn.com/play.png"></div>';
     					$html += '</div></div>';

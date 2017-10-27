@@ -118,7 +118,7 @@
 					   			 <div class="column content-flex-wrap">
 						 			<c:forEach var="cu" items="${cultures}" varStatus="status">
 						 				<div class="pos-relative culture-img ">
-									    	<img src="${cu.background}" class="img-responsive zoom-img" >
+									    	<img src="${cu.background}?imageView2/4/w/700/h/260/format/jpg/q/75|imageslim" class="img-responsive zoom-img" >
 									    	<div class="cuture-div">
 												<div class="text-left">
 													<h3 class="cluture-title">${cu.title} </h3>

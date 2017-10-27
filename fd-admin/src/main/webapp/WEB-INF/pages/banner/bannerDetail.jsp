@@ -5,31 +5,35 @@
 <head>
 <%@ include file="/WEB-INF/pages/common/globa.jsp"%>
 <title>banner信息</title>
-<script type="text/javascript" src="${SERVER_PATH_resources}/js/decorators/default.js"></script>
+<script type="text/javascript"
+	src="${SERVER_PATH_resources}/js/decorators/default.js"></script>
 </head>
 <body>
 
-<form class="form-horizontal" id="objectDetailForm" role="form">
-	<div class="row">
+	<form class="form-horizontal" id="objectDetailForm" role="form">
+		<div class="row">
 
-		<input type="hidden" id="id" name="bid" value="${bean.bid }">
-        <input type="hidden" value="${uptoken}" id="uploadToken">
-		<div class="form-group">
-			<label  class="col-sm-3 control-label" for="title">标题</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control required"  id="title" name="title" placeholder="标题" value="${bean.title}">
+			<input type="hidden" id="id" name="bid" value="${bean.bid }">
+			<input type="hidden" value="${uptoken}" id="uploadToken">
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="title">标题</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control required" id="title"
+						name="title" placeholder="标题" value="${bean.title}">
+				</div>
 			</div>
-		</div>
-		
-		<div class="form-group">
-			<label class="col-sm-3 control-label" for="type">类型</label>
-			<div class="col-sm-4">
-				<select id="code" name="bannerCode" class="form-control col-xs-4 col-sm-4">
-					<c:choose>
-						<c:when test="${!empty codes}">
+
+			<div class="form-group">
+				<label class="col-sm-3 control-label" for="type">类型</label>
+				<div class="col-sm-4">
+					<select id="code" name="bannerCode"
+						class="form-control col-xs-4 col-sm-4">
+						<c:choose>
+							<c:when test="${!empty codes}">
 								<option></option>
 								<c:forEach var="code" items="${codes}" varStatus="i">
-									<option value="${code.bannerCode}" <c:if test="${!empty bean and !empty bean.bannerCode and code.bannerCode==bean.bannerCode}">selected="selected"</c:if>>${code.name }</option>
+									<option value="${code.bannerCode}"
+										<c:if test="${!empty bean and !empty bean.bannerCode and code.bannerCode==bean.bannerCode}">selected="selected"</c:if>>${code.name }</option>
 									
 								</c:forEach>
 							</select>

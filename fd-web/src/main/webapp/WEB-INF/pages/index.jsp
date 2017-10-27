@@ -203,6 +203,5 @@
 	<script type="text/javascript" src="${SERVER_PATH_resources}/js/student.js"></script>
 	<script type="text/javascript" src="${SERVER_PATH_resources}/js/index.js"></script>
 	<script type="text/javascript" src="${SERVER_PATH_resources}/js/video.js"></script>
-		
 </body>
 </html>
